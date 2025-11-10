@@ -1,0 +1,26 @@
+# robots.txt pour automapros.ca
+# Génération automatique - Novembre 2025
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://automapros.ca/sitemap.xml
+
+# Empêcher l'indexation des fichiers système (si présents)
+Disallow: /cgi-bin/
+Disallow: /.git/
+Disallow: /tmp/
+
+# Autoriser tous les robots de recherche populaires
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Temps d'attente recommandé entre les requêtes (en secondes)
+Crawl-delay: 1

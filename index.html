@@ -3,8 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency Leo Services - Solutions d'Automatisation IA pour PME</title>
-    <meta name="description" content="Automatisez votre service client, prospection et gestion avec l'IA. Chatbots intelligents, flux automatisés et intégrations sur-mesure pour PME.">
+    
+    <!-- Primary Meta Tags -->
+    <title>Agency Leo Services - Solutions d'Automatisation IA pour PME | Montréal</title>
+    <meta name="title" content="Agency Leo Services - Solutions d'Automatisation IA pour PME | Montréal">
+    <meta name="description" content="Automatisez votre service client, prospection et gestion avec l'IA. Chatbots intelligents, flux automatisés et intégrations sur-mesure pour PME à Montréal, Québec.">
+    <meta name="keywords" content="automatisation IA, chatbot intelligent, prospection automatique, service client automatisé, intégration IA, PME Montréal, solutions IA Québec, n8n, make, zapier, chatbot WhatsApp">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="French">
+    <meta name="author" content="Agency Leo Services">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://automapros.ca/">
+    <meta property="og:title" content="Agency Leo Services - Solutions d'Automatisation IA pour PME">
+    <meta property="og:description" content="Automatisez votre service client, prospection et gestion avec l'IA. Chatbots intelligents 24/7, flux automatisés et intégrations sur-mesure pour PME.">
+    <meta property="og:image" content="https://automapros.ca/og-image.png">
+    <meta property="og:site_name" content="Agency Leo Services">
+    <meta property="og:locale" content="fr_CA">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://automapros.ca/">
+    <meta property="twitter:title" content="Agency Leo Services - Solutions d'Automatisation IA pour PME">
+    <meta property="twitter:description" content="Automatisez votre service client, prospection et gestion avec l'IA. Chatbots intelligents 24/7.">
+    <meta property="twitter:image" content="https://automapros.ca/twitter-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://automapros.ca/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Agency Leo Services",
+      "alternateName": "AutomaPros",
+      "url": "https://automapros.ca",
+      "logo": "https://automapros.ca/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-438-334-0328",
+        "contactType": "customer service",
+        "areaServed": "CA",
+        "availableLanguage": ["fr", "en"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "630 avenue Querbes",
+        "addressLocality": "Montréal",
+        "addressRegion": "QC",
+        "postalCode": "H2V 3W7",
+        "addressCountry": "CA"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/agency-leo-services",
+        "https://twitter.com/agencyleoservices",
+        "https://www.facebook.com/agencyleoservices"
+      ],
+      "description": "Agency Leo Services propose des solutions d'automatisation par intelligence artificielle pour les PME : chatbots, prospection automatisée, gestion de rendez-vous et intégrations sur-mesure."
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'page_title': 'Home',
+        'page_location': window.location.href
+      });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -802,6 +877,285 @@
                 font-size: 2.5rem;
             }
         }
+
+        /* NOUVELLES SECTIONS CSS */
+        
+        /* About Section */
+        .about {
+            background: var(--medium-gray);
+            padding: 6rem 2rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-green);
+            font-weight: 800;
+        }
+
+        .about-text h3 i {
+            margin-right: 1rem;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .about-features i {
+            color: var(--neon-green);
+            font-size: 1.3rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--neon-green) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            box-shadow: 0 20px 60px var(--glow-green);
+            border: 1px solid var(--neon-green);
+        }
+
+        .about-image i {
+            font-size: 10rem;
+            color: var(--deep-black);
+            opacity: 0.9;
+        }
+
+        /* Mission & Vision Section */
+        .mission-vision {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--neon-green) 100%);
+            color: var(--deep-black);
+            padding: 6rem 2rem;
+        }
+
+        .mission-vision h2, .mission-vision p.section-subtitle {
+            color: var(--deep-black);
+        }
+
+        .mission-vision-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .mission-card, .vision-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 800;
+            color: var(--deep-black);
+        }
+
+        .mission-card p, .vision-card p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            color: var(--deep-black);
+        }
+
+        .mission-card i, .vision-card i {
+            font-size: 2.5rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: var(--dark-gray);
+            padding: 6rem 2rem;
+        }
+
+        .why-us-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-us-card {
+            background: var(--medium-gray);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--glow-green);
+            border-color: var(--neon-green);
+        }
+
+        .why-us-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--dark-green), var(--neon-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--deep-black);
+            font-size: 1.5rem;
+        }
+
+        .why-us-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--neon-green);
+            font-weight: 700;
+        }
+
+        .why-us-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Improved Footer */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--neon-green);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--text-gray);
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-green);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 0;
+        }
+
+        .footer-social a:hover {
+            background: var(--neon-green);
+            color: var(--deep-black);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--glow-green);
+            padding-left: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom a {
+            color: var(--neon-green);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            text-shadow: 0 0 10px var(--glow-green);
+        }
+
+        /* Responsive for new sections */
+        @media (max-width: 968px) {
+            .about-content,
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -820,8 +1174,7 @@
         <nav>
             <div class="nav-container">
                 <a href="#top" class="logo">
-                    <i class="fas fa-robot"></i>
-                    AGENCY LEO SERVICES
+                    <img src="logo.png" alt="Agency Leo Services Logo" style="height: 50px; width: auto;">
                 </a>
                 <a href="#contact" class="nav-cta">
                     <i class="fas fa-calendar-check"></i> Consultation Gratuite
@@ -870,6 +1223,26 @@
                 <div class="stat-item scroll-reveal">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">Personnalisé</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-content scroll-reveal">
+                <div class="about-text">
+                    <h3><i class="fas fa-building"></i> Qui sommes-nous ?</h3>
+                    <p><strong>Agency Leo Services</strong> est une agence spécialisée dans l'intégration de solutions d'intelligence artificielle pour automatiser et optimiser la gestion du service client.</p>
+                    <p>Nous aidons les PME, agences et indépendants à gagner du temps, améliorer leur efficacité et offrir une expérience client fluide, 24h/24 et 7j/7.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Expertise en automatisation IA</li>
+                        <li><i class="fas fa-check-circle"></i> Solutions personnalisées</li>
+                        <li><i class="fas fa-check-circle"></i> Support humain inclus</li>
+                        <li><i class="fas fa-check-circle"></i> Intégration rapide</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-brain"></i>
                 </div>
             </div>
         </section>
@@ -1036,6 +1409,82 @@
                     <a href="#contact" class="service-link">
                         Découvrir <i class="fas fa-arrow-right"></i>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="mission-vision">
+            <h2 class="section-title scroll-reveal">Notre Mission & Vision</h2>
+            <p class="section-subtitle scroll-reveal">Ce qui nous anime au quotidien</p>
+            
+            <div class="mission-vision-grid">
+                <div class="mission-card scroll-reveal">
+                    <h3><i class="fas fa-rocket"></i> Notre Mission</h3>
+                    <p>Notre mission est simple : <strong>aider les entreprises à se concentrer sur leur cœur de métier pendant que la technologie s'occupe du reste.</strong></p>
+                    <p>Nous croyons que chaque entreprise, peu importe sa taille, mérite d'accéder à la puissance de l'intelligence artificielle.</p>
+                </div>
+
+                <div class="vision-card scroll-reveal">
+                    <h3><i class="fas fa-eye"></i> Notre Vision</h3>
+                    <p>Nous voulons <strong>rendre l'automatisation accessible à tous.</strong> Plus qu'un service, nous proposons un partenariat digital où l'IA devient un allié quotidien.</p>
+                    <p>Ensemble, construisons l'avenir de votre entreprise avec des solutions intelligentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="why-us">
+            <h2 class="section-title scroll-reveal">Pourquoi nous choisir ?</h2>
+            <p class="section-subtitle scroll-reveal">Des solutions qui font la différence</p>
+            
+            <div class="why-us-grid">
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h4>Solutions personnalisées</h4>
+                    <p>Chaque entreprise est unique. Nous adaptons nos solutions à votre activité et vos objectifs spécifiques.</p>
+                </div>
+
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Intégration rapide</h4>
+                    <p>Mise en place sans complexité technique. Première livraison sous 2 à 5 jours pour des résultats immédiats.</p>
+                </div>
+
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h4>Assistance humaine</h4>
+                    <p>Support technique et formation inclus. Une équipe dédiée pour vous accompagner à chaque étape.</p>
+                </div>
+
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4>Tarifs adaptés PME</h4>
+                    <p>Solutions accessibles pour toutes les tailles d'entreprises avec un excellent retour sur investissement.</p>
+                </div>
+
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Expertise avancée</h4>
+                    <p>Maîtrise des outils modernes : IA, automation, CRM, marketing digital et intégrations complexes.</p>
+                </div>
+
+                <div class="why-us-card scroll-reveal">
+                    <div class="why-us-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Satisfaction garantie</h4>
+                    <p>100% de clients satisfaits. Nous nous engageons pour votre réussite avec des résultats mesurables.</p>
                 </div>
             </div>
         </section>
@@ -1277,16 +1726,47 @@
         </section>
 
         <footer>
-            <p><strong>Agency Leo Services</strong></p>
-            <p>Solutions d'Automatisation IA pour PME, Agences & Indépendants</p>
-            <p>✉️ contact@agency-leoservices.ca</p>
-            <div class="social-links">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-robot"></i> Agency Leo Services</h4>
+                    <p>Solutions d'intelligence artificielle pour automatiser et optimiser votre service client.</p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="#services">Chatbots & Assistants IA</a>
+                    <a href="#services">Prospection Automatisée</a>
+                    <a href="#services">Gestion de Rendez-vous</a>
+                    <a href="#services">Intégrations Multi-Outils</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Entreprise</h4>
+                    <a href="#about">À propos</a>
+                    <a href="#why-us">Pourquoi nous choisir</a>
+                    <a href="#benefits">Avantages</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> contact@automapros.ca</p>
+                    <p><i class="fas fa-phone"></i> +1 (438) 334-0328</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 630 avenue Querbes<br>Montréal, QC H2V 3W7, Canada</p>
+                </div>
             </div>
-            <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2025 Agency Leo Services. Tous droits réservés.</p>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Agency Leo Services. Tous droits réservés. | 
+                <a href="mentions-legales.html">Mentions Légales</a> | 
+                <a href="politique-confidentialite.html">Politique de Confidentialité</a></p>
+            </div>
         </footer>
     </div>
 
