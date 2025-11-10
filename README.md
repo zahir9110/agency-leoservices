@@ -1,413 +1,269 @@
-# 🚀 AutomaPros - Site Web Complet et Professionnel
+# 🤖 Agency Leo Services - Site Web Dynamique
 
-## 📦 Contenu du Package
+Site web professionnel avec automatisation IA, formulaire de contact, avis clients dynamiques et chatbot intelligent.
 
-Félicitations ! Votre site web professionnel est maintenant **100% complet** avec toutes les optimisations nécessaires.
+![Agency Leo Services](./public/images/logo.png)
 
----
+## ✨ Fonctionnalités
 
-## ✅ CE QUI A ÉTÉ FAIT
+- ✅ **Formulaire de contact fonctionnel** avec envoi d'emails automatique
+- ✅ **Catalogue de services dynamique** chargé depuis JSON
+- ✅ **Système d'avis clients** avec rotation automatique
+- ✅ **Chatbot IA intelligent** pour assistance 24/7
+- ✅ **Design responsive** mobile-first
+- ✅ **API REST sécurisée** avec rate limiting
+- ✅ **Prêt pour production** avec PM2 et Nginx
 
-### 1. 🎨 **Site Web Principal (index.html)**
+## 🚀 Démarrage Rapide
 
-#### **Sections Intégrées :**
-- ✅ Navigation avec votre logo
-- ✅ Hero section avec animation Matrix
-- ✅ Section Statistiques (24/7, 3-5j, etc.)
-- ✅ **NOUVEAU** : Section "À Propos"
-- ✅ Section Bénéfices (6 avantages)
-- ✅ Section Services (6 services détaillés)
-- ✅ **NOUVEAU** : Section "Mission & Vision"
-- ✅ **NOUVEAU** : Section "Pourquoi nous choisir" (6 raisons)
-- ✅ Section Outils/Technologies
-- ✅ Section Processus (3 étapes)
-- ✅ FAQ complète
-- ✅ Formulaire de contact
-- ✅ Section CTA finale
-- ✅ **NOUVEAU** : Footer professionnel avec 4 colonnes
+### Prérequis
+- Node.js >= 16.0.0
+- npm >= 8.0.0
 
-#### **Optimisations SEO :**
-- ✅ Meta tags primaires optimisés
-- ✅ Open Graph pour Facebook/LinkedIn
-- ✅ Twitter Cards
-- ✅ Schema.org (Organization)
-- ✅ Canonical URL
-- ✅ Balises alt pour images
-- ✅ Mots-clés optimisés pour Montréal/Québec
+### Installation
 
-#### **Google Analytics :**
-- ✅ Code Google Analytics 4 intégré
-- ✅ Suivi des événements personnalisés
-- ✅ Instructions de configuration complètes
-
-### 2. 📄 **Pages Légales**
-
-#### **mentions-legales.html**
-- ✅ Informations éditeur complètes
-- ✅ Hébergement (AWS EC2)
-- ✅ Propriété intellectuelle
-- ✅ RGPD et données personnelles
-- ✅ Cookies et traceurs
-- ✅ Limitation de responsabilité
-- ✅ Design cohérent avec le site
-
-#### **politique-confidentialite.html**
-- ✅ Responsable du traitement
-- ✅ Données collectées (tableau détaillé)
-- ✅ Finalités et base légale
-- ✅ Durée de conservation
-- ✅ Destinataires des données
-- ✅ Droits des utilisateurs (RGPD)
-- ✅ Gestion des cookies
-- ✅ Mesures de sécurité
-- ✅ Protection des mineurs
-
-### 3. 🖼️ **Logo**
-
-- ✅ Logo professionnel intégré dans la navigation
-- ✅ Fichier : `logo.png`
-
-### 4. 📚 **Documentation**
-
-- ✅ **CONFIGURATION-GOOGLE-ANALYTICS.md** : Guide complet étape par étape
-- ✅ **README.md** : Ce document
-
----
-
-## 📂 Structure des Fichiers
-
-```
-automapros-site-complet/
-│
-├── index.html                           # Site principal ⭐
-├── mentions-legales.html                 # Mentions légales
-├── politique-confidentialite.html        # Politique RGPD
-├── logo.png                              # Votre logo
-├── CONFIGURATION-GOOGLE-ANALYTICS.md     # Guide Analytics
-└── README.md                             # Ce document
-```
-
----
-
-## 🚀 DÉPLOIEMENT SUR VOTRE SERVEUR EC2
-
-### **Prérequis**
-
-Avant de commencer, assurez-vous d'avoir :
-- [ ] Votre clé SSH (.pem) pour accéder à EC2
-- [ ] L'adresse IP de votre serveur : **54.226.53.197**
-- [ ] Un serveur web installé (Apache ou Nginx)
-
----
-
-### **Option 1 : Déploiement via SCP (Ligne de commande)**
-
-#### Depuis votre ordinateur (Mac/Linux) :
-
+1. **Cloner le projet**
 ```bash
-# 1. Naviguez vers le dossier contenant les fichiers
-cd /chemin/vers/automapros-site-complet/
-
-# 2. Copiez tous les fichiers sur le serveur
-scp -i votre-cle.pem index.html ubuntu@54.226.53.197:/var/www/html/
-scp -i votre-cle.pem mentions-legales.html ubuntu@54.226.53.197:/var/www/html/
-scp -i votre-cle.pem politique-confidentialite.html ubuntu@54.226.53.197:/var/www/html/
-scp -i votre-cle.pem logo.png ubuntu@54.226.53.197:/var/www/html/
-
-# 3. Connectez-vous au serveur pour vérifier
-ssh -i votre-cle.pem ubuntu@54.226.53.197
-
-# 4. Vérifiez les fichiers
-ls -la /var/www/html/
-
-# 5. Ajustez les permissions
-sudo chmod 644 /var/www/html/*.html
-sudo chmod 644 /var/www/html/*.png
-sudo chown www-data:www-data /var/www/html/*
+git clone <votre-repo>
+cd agency-leo-dynamic
 ```
 
-#### Depuis Windows (PowerShell) :
-
-```powershell
-# Utilisez PSCP (PuTTY SCP) ou WinSCP
-pscp -i votre-cle.ppk index.html ubuntu@54.226.53.197:/var/www/html/
-pscp -i votre-cle.ppk mentions-legales.html ubuntu@54.226.53.197:/var/www/html/
-pscp -i votre-cle.ppk politique-confidentialite.html ubuntu@54.226.53.197:/var/www/html/
-pscp -i votre-cle.ppk logo.png ubuntu@54.226.53.197:/var/www/html/
-```
-
----
-
-### **Option 2 : Déploiement via SFTP (Interface Graphique)**
-
-#### Avec FileZilla :
-
-1. **Téléchargez FileZilla** : [https://filezilla-project.org/](https://filezilla-project.org/)
-2. **Configurez la connexion** :
-   - **Hôte** : `sftp://54.226.53.197`
-   - **Utilisateur** : `ubuntu`
-   - **Port** : `22`
-   - **Type d'authentification** : Fichier de clé
-   - **Fichier de clé** : Sélectionnez votre fichier `.pem` ou `.ppk`
-3. **Connectez-vous**
-4. **Naviguez** vers `/var/www/html/` sur le serveur (panneau de droite)
-5. **Glissez-déposez** tous les fichiers du dossier local vers le serveur
-
-#### Avec Cyberduck (Mac) :
-
-1. **Téléchargez Cyberduck** : [https://cyberduck.io/](https://cyberduck.io/)
-2. **Nouvelle connexion SFTP**
-3. **Serveur** : `54.226.53.197`
-4. **Utilisateur** : `ubuntu`
-5. **Clé SSH** : Sélectionnez votre `.pem`
-6. **Connectez** et uploadez les fichiers
-
----
-
-### **Option 3 : Déploiement via Git (Recommandé pour mises à jour)**
-
+2. **Installer les dépendances**
 ```bash
-# Sur votre serveur EC2
-ssh -i votre-cle.pem ubuntu@54.226.53.197
-
-# Créez un dépôt Git local
-cd /var/www/html/
-sudo git init
-sudo git config --global --add safe.directory /var/www/html
-
-# Depuis votre ordinateur, créez un repo GitHub et poussez les fichiers
-# Puis, sur le serveur :
-sudo git remote add origin https://github.com/votre-username/automapros.git
-sudo git pull origin main
+npm install
 ```
 
----
-
-## 🔧 CONFIGURATION POST-DÉPLOIEMENT
-
-### **1. Vérification du Serveur Web**
-
-#### Si Apache :
+3. **Configuration**
 ```bash
-# Vérifier qu'Apache est actif
-sudo systemctl status apache2
-
-# Si non actif, démarrez-le
-sudo systemctl start apache2
-
-# Activer au démarrage
-sudo systemctl enable apache2
-
-# Tester la configuration
-sudo apache2ctl configtest
-
-# Redémarrer Apache
-sudo systemctl restart apache2
+cp .env.example .env
+nano .env
 ```
 
-#### Si Nginx :
+Configurez vos variables d'environnement:
+- `EMAIL_USER`: Votre email Gmail
+- `EMAIL_PASSWORD`: Mot de passe d'application Gmail
+- `PORT`: Port du serveur (défaut: 3000)
+
+4. **Lancer en développement**
 ```bash
-# Vérifier que Nginx est actif
-sudo systemctl status nginx
-
-# Si non actif, démarrez-le
-sudo systemctl start nginx
-
-# Activer au démarrage
-sudo systemctl enable nginx
-
-# Tester la configuration
-sudo nginx -t
-
-# Redémarrer Nginx
-sudo systemctl restart nginx
+npm run dev
 ```
 
-### **2. Configuration HTTPS (SSL/TLS)**
+5. **Accéder à l'application**
+Ouvrez votre navigateur sur: http://localhost:3000
 
-#### Avec Let's Encrypt (Gratuit) :
+## 📁 Structure du Projet
 
+```
+agency-leo-dynamic/
+├── server/
+│   └── server.js              # Serveur Express principal
+├── public/
+│   ├── index.html             # Page HTML principale
+│   ├── css/
+│   │   └── style.css          # Styles CSS
+│   ├── js/
+│   │   └── main.js            # JavaScript client
+│   └── images/                # Images et assets
+├── data/
+│   ├── avis.json              # Base de données des avis clients
+│   ├── services.json          # Catalogue des services
+│   └── contacts.json          # Historique des contacts (créé auto)
+├── config/                    # Fichiers de configuration
+├── package.json               # Dépendances npm
+├── .env.example               # Template des variables d'environnement
+├── ecosystem.config.js        # Configuration PM2 pour production
+└── DEPLOY_AWS_EC2.md          # Guide de déploiement AWS
+```
+
+## 🎨 Personnalisation
+
+### Modifier les avis clients
+Éditez le fichier `data/avis.json`:
+
+```json
+{
+  "avis": [
+    {
+      "id": 1,
+      "rating": 5,
+      "nom": "Votre Client",
+      "poste": "Son poste",
+      "entreprise": "Son entreprise",
+      "texte": "Son témoignage...",
+      "visible": true
+    }
+  ]
+}
+```
+
+### Modifier les services
+Éditez le fichier `data/services.json`:
+
+```json
+{
+  "services": [
+    {
+      "id": 1,
+      "titre": "Nom du service",
+      "description": "Description...",
+      "icon": "🤖",
+      "prix": "À partir de 499€",
+      "features": ["Feature 1", "Feature 2"],
+      "categorie": "Catégorie",
+      "populaire": true
+    }
+  ]
+}
+```
+
+### Personnaliser les couleurs
+Dans `public/css/style.css`, modifiez les variables CSS:
+
+```css
+:root {
+    --primary-color: #00FF00;      /* Couleur principale */
+    --secondary-color: #1a1a1a;    /* Couleur secondaire */
+    --accent-color: #00CC00;       /* Couleur d'accent */
+}
+```
+
+## 🔌 API Endpoints
+
+### Avis Clients
+- `GET /api/avis` - Liste tous les avis visibles
+- `GET /api/avis/:id` - Récupère un avis spécifique
+- `POST /api/avis` - Ajoute un nouvel avis
+
+### Services
+- `GET /api/services` - Liste tous les services
+- `GET /api/services?categorie=X` - Filtre par catégorie
+- `GET /api/services?populaire=true` - Services populaires uniquement
+- `GET /api/services/:id` - Récupère un service spécifique
+
+### Contact
+- `POST /api/contact` - Envoi du formulaire de contact
+
+### Chatbot
+- `POST /api/chatbot` - Conversation avec le bot
+
+### Health Check
+- `GET /api/health` - Vérification de l'état du serveur
+
+## 🌐 Déploiement
+
+### Déploiement sur AWS EC2
+Suivez le guide complet dans [`DEPLOY_AWS_EC2.md`](./DEPLOY_AWS_EC2.md)
+
+### Déploiement rapide avec PM2
 ```bash
-# Installer Certbot
-sudo apt update
-sudo apt install certbot python3-certbot-apache  # Pour Apache
-# OU
-sudo apt install certbot python3-certbot-nginx   # Pour Nginx
+# Installation PM2
+npm install -g pm2
 
-# Obtenir un certificat SSL
-sudo certbot --apache -d automapros.ca -d www.automapros.ca  # Apache
-# OU
-sudo certbot --nginx -d automapros.ca -d www.automapros.ca   # Nginx
+# Démarrage
+pm2 start ecosystem.config.js
 
-# Renouvellement automatique (déjà configuré par défaut)
-sudo certbot renew --dry-run
+# Monitoring
+pm2 monit
+
+# Logs
+pm2 logs
 ```
 
-### **3. Configuration Google Analytics**
+## 🔒 Sécurité
 
-1. **Suivez le guide** : `CONFIGURATION-GOOGLE-ANALYTICS.md`
-2. **Remplacez** `G-XXXXXXXXXX` par votre vrai ID dans `index.html`
-3. **Re-uploadez** le fichier sur le serveur
+- ✅ Rate limiting sur toutes les routes API
+- ✅ Helmet.js pour les headers de sécurité
+- ✅ Validation des entrées
+- ✅ Protection CORS
+- ✅ Variables d'environnement pour les secrets
 
-### **4. Test du Site**
+## 🛠️ Technologies Utilisées
 
-Visitez :
-- ✅ **http://automapros.ca** (devrait rediriger vers HTTPS)
-- ✅ **https://automapros.ca**
-- ✅ **https://www.automapros.ca**
-- ✅ **https://automapros.ca/mentions-legales.html**
-- ✅ **https://automapros.ca/politique-confidentialite.html**
+### Backend
+- **Node.js** - Runtime JavaScript
+- **Express** - Framework web
+- **Nodemailer** - Envoi d'emails
+- **Helmet** - Sécurité HTTP
+- **express-rate-limit** - Protection contre les abus
 
----
+### Frontend
+- **HTML5** - Structure
+- **CSS3** - Styles modernes
+- **JavaScript (ES6+)** - Logique client
+- **Font Awesome** - Icônes
+- **Google Fonts** - Typographie
 
-## 📊 CHECKLIST AVANT MISE EN LIGNE
+### DevOps
+- **PM2** - Gestionnaire de processus
+- **Nginx** - Reverse proxy
+- **Let's Encrypt** - Certificats SSL gratuits
 
-### **Contenu**
-- [ ] Vérifier que toutes les informations sont correctes
-- [ ] Remplacer les textes placeholder si nécessaire
-- [ ] Vérifier l'email de contact : `contact@automapros.ca`
-- [ ] Vérifier le téléphone : `+1 (438) 334-0328`
-- [ ] Vérifier l'adresse : `630 avenue Querbes, Montréal`
+## 📊 Monitoring
 
-### **Configuration**
-- [ ] Google Analytics ID remplacé
-- [ ] DNS configuré (automapros.ca → 54.226.53.197)
-- [ ] SSL/HTTPS activé
-- [ ] Serveur web actif (Apache/Nginx)
-- [ ] Permissions fichiers correctes (644)
+### Logs PM2
+```bash
+pm2 logs agency-leo-services
+```
 
-### **Tests**
-- [ ] Site accessible sur http://automapros.ca
-- [ ] Site accessible sur https://automapros.ca
-- [ ] Toutes les pages s'affichent correctement
-- [ ] Formulaire de contact fonctionne
-- [ ] Chatbot fonctionne
-- [ ] Logo s'affiche correctement
-- [ ] Pages légales accessibles
-- [ ] Test sur mobile (responsive)
-- [ ] Test sur différents navigateurs (Chrome, Firefox, Safari)
+### Métriques
+```bash
+pm2 monit
+```
 
-### **SEO & Analytics**
-- [ ] Google Analytics détecte les visiteurs
-- [ ] Meta tags vérifiés (vue page source)
-- [ ] Sitemap.xml créé (optionnel)
-- [ ] Google Search Console configuré (optionnel)
-- [ ] Robots.txt créé (optionnel)
+### Logs Nginx
+```bash
+sudo tail -f /var/log/nginx/agency-leo-access.log
+```
 
----
+## 🐛 Débogage
 
-## 🎯 PROCHAINES ÉTAPES RECOMMANDÉES
+### Problèmes courants
 
-### **À Court Terme (Cette Semaine)**
+**L'application ne démarre pas**
+```bash
+# Vérifier les dépendances
+npm install
 
-1. **Tester le site** sur tous les appareils
-2. **Configurer Google Analytics** (voir guide)
-3. **Ajouter une bannière cookies** pour la conformité RGPD :
-   - [Cookiebot](https://www.cookiebot.com) (Gratuit jusqu'à 100 pages)
-   - [Axeptio](https://www.axeptio.eu)
-   - [Tarteaucitron.js](https://tarteaucitron.io) (Open Source)
+# Vérifier le fichier .env
+cat .env
 
-### **À Moyen Terme (Ce Mois)**
+# Tester manuellement
+npm start
+```
 
-4. **Créer des comptes réseaux sociaux** :
-   - LinkedIn : [linkedin.com/company/create](https://linkedin.com/company/create)
-   - Facebook Business : [facebook.com/business/create](https://facebook.com/business/create)
-   - Twitter : [twitter.com/i/flow/signup](https://twitter.com/i/flow/signup)
-   - Instagram Business : [instagram.com/accounts/emailsignup](https://instagram.com/accounts/emailsignup)
+**Les emails ne s'envoient pas**
+- Vérifiez vos credentials Gmail dans `.env`
+- Créez un mot de passe d'application: https://myaccount.google.com/apppasswords
+- Vérifiez que la validation en 2 étapes est activée
 
-5. **Mettre à jour les liens réseaux sociaux** dans le footer
+**Erreur de connexion API**
+```bash
+# Vérifier que le serveur tourne
+curl http://localhost:3000/api/health
+```
 
-6. **Google Search Console** :
-   - Soumettre votre sitemap
-   - Vérifier l'indexation
-   - Surveiller les erreurs
+## 📈 Améliorations Futures
 
-7. **Google My Business** :
-   - Créer votre fiche d'entreprise
-   - Ajouter photos, horaires, adresse
-   - Améliorer le SEO local (Montréal)
+- [ ] Intégration d'un vrai chatbot IA (OpenAI/Claude)
+- [ ] Dashboard administrateur
+- [ ] Base de données MongoDB
+- [ ] Système de réservation en ligne
+- [ ] Authentification utilisateur
+- [ ] Analytics et suivi des conversions
+- [ ] Tests automatisés
+- [ ] CI/CD avec GitHub Actions
 
-### **À Long Terme (Trimestre)**
+## 📝 Licence
 
-8. **Créer du contenu** :
-   - Blog sur l'automatisation IA
-   - Études de cas clients
-   - Vidéos de démo
+© 2024 Agency Leo Services. Tous droits réservés.
 
-9. **Campagnes Marketing** :
-   - Google Ads
-   - Facebook/Instagram Ads
-   - LinkedIn Ads (B2B)
+## 👨‍💻 Support
 
-10. **Optimisation Continue** :
-   - Analyser Google Analytics
-   - A/B testing des CTA
-   - Améliorer le taux de conversion
+Pour toute question ou support:
+- 📧 Email: contact@agencyleo.com
+- 🌐 Site web: https://agencyleo.com
 
 ---
 
-## 🆘 SUPPORT & DÉPANNAGE
-
-### **Problèmes Courants**
-
-#### **Le site ne s'affiche pas**
-- Vérifiez que le serveur web est actif : `sudo systemctl status apache2` ou `nginx`
-- Vérifiez les logs : `sudo tail -f /var/log/apache2/error.log`
-- Vérifiez les permissions des fichiers
-
-#### **Le logo ne s'affiche pas**
-- Vérifiez que `logo.png` est dans le même dossier que `index.html`
-- Vérifiez les permissions : `sudo chmod 644 logo.png`
-- Vérifiez le chemin dans le code HTML
-
-#### **Les pages légales renvoient 404**
-- Vérifiez que les fichiers sont bien uploadés
-- Vérifiez les noms de fichiers (pas d'espaces, bonne extension .html)
-
-#### **Google Analytics ne fonctionne pas**
-- Attendez 24-48h pour les premières données
-- Testez en mode "Temps réel"
-- Vérifiez que l'ID est correct (G-XXXXXXXXXX)
-- Désactivez les bloqueurs de publicité
-
----
-
-## 📞 CONTACT
-
-Pour toute question ou assistance :
-
-**Email** : contact@automapros.ca  
-**Téléphone** : +1 (438) 334-0328  
-**Adresse** : 630 avenue Querbes, Montréal, QC H2V 3W7, Canada
-
----
-
-## 🎉 FÉLICITATIONS !
-
-Votre site web professionnel est maintenant prêt à être déployé ! 🚀
-
-Vous avez maintenant :
-- ✅ Un site web moderne et professionnel
-- ✅ Toutes les sections nécessaires
-- ✅ Des pages légales conformes au RGPD
-- ✅ Un SEO optimisé
-- ✅ Google Analytics configuré
-- ✅ Un design responsive
-- ✅ Un chatbot IA intégré
-- ✅ Des formulaires fonctionnels
-
-**Il ne vous reste plus qu'à :**
-1. Uploader les fichiers sur votre serveur EC2
-2. Configurer Google Analytics (5 minutes)
-3. Activer SSL/HTTPS
-4. Lancer votre marketing ! 💪
-
----
-
-**Bonne chance avec Agency Leo Services ! 🚀**
-
----
-
-**Version** : 1.0 - Site Complet et Professionnel  
-**Date** : Novembre 2025  
-**Développé avec** : Claude AI, HTML5, CSS3, JavaScript, Font Awesome
+**Développé avec ❤️ par Agency Leo Services**
