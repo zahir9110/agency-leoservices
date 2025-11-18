@@ -1,0 +1,523 @@
+/*
+ * ========================================
+ * CSS ADDITIONS FOR AGENCY LEO SERVICES V2.0
+ * ========================================
+ *
+ * Add these styles to your existing style.css file
+ * or create a new file and link it after the main style.css
+ */
+
+/* ========================================
+   TOP BAR & CURRENCY SELECTOR
+   ========================================*/
+.top-bar {
+    background: #1a1a1a;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #333;
+}
+
+.currency-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    color: #fff;
+}
+
+.currency-selector label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.currency-select {
+    background: #2a2a2a;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.currency-select:hover {
+    background: #333;
+}
+
+/* ========================================
+   HERO ENHANCEMENTS
+   ========================================*/
+.hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #00FF00, #00CC00);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+/* ========================================
+   SOLUTIONS SECTION (NEW)
+   ========================================*/
+.solutions {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.solution-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,255,0,0.2);
+}
+
+.solution-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.solution-card h3 {
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.solution-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========================================
+   CTA BANNER
+   ========================================*/
+.cta-banner {
+    background: linear-gradient(135deg, #00FF00, #00CC00);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 50px;
+    color: #000;
+}
+
+.cta-banner h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.cta-banner p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cta-banner .btn {
+    background: #000;
+    color: #00FF00;
+}
+
+/* ========================================
+   PROCESS TIMELINE
+   ========================================*/
+.process {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.process-step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #00FF00;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+}
+
+.step-content h3 {
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.step-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========================================
+   FAQ SECTION
+   ========================================*/
+.faq {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.faq-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid #00FF00;
+}
+
+.faq-item h3 {
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-item h3 i {
+    color: #00FF00;
+}
+
+.faq-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========================================
+   REVIEW SUBMISSION MODAL
+   ========================================*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.rating-input {
+    display: flex;
+    gap: 10px;
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.rating-input i {
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.rating-input i:hover,
+.rating-input i.fas {
+    color: #FFD700;
+}
+
+.submit-review-cta {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+/* ========================================
+   NEWSLETTER BOX
+   ========================================*/
+.newsletter-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.newsletter-box h4 {
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+}
+
+.newsletter-status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.newsletter-status.success {
+    background: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+.newsletter-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+/* ========================================
+   SCROLL TO TOP BUTTON
+   ========================================*/
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #00FF00;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0,255,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top.visible {
+    display: flex;
+}
+
+.scroll-top:hover {
+    background: #00CC00;
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   SERVICE CARD ENHANCEMENTS
+   ========================================*/
+.service-card.premium {
+    border: 2px solid #FFD700;
+    position: relative;
+}
+
+.service-badge.premium {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+}
+
+.service-ideal {
+    font-size: 14px;
+    color: #00FF00;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.currency-reminder {
+    text-align: center;
+    padding: 15px;
+    background: #e7f7ff;
+    border-radius: 5px;
+    margin: 20px 0;
+    color: #0066cc;
+}
+
+/* ========================================
+   FORM IMPROVEMENTS
+   ========================================*/
+.form-note {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-status {
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    display: none;
+}
+
+.form-status.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.form-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================*/
+@media (max-width: 768px) {
+    .solutions-grid,
+    .process-timeline,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .currency-selector {
+        justify-content: center;
+    }
+
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+/* ========================================
+   LOADING & ERROR STATES
+   ========================================*/
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #00FF00;
+    font-size: 18px;
+}
+
+.loading i {
+    margin-right: 10px;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #ff4444;
+}
+
+.error-message i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ========================================*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-card,
+.solution-card,
+.process-step,
+.faq-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger animation delays */
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
