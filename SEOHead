@@ -1,0 +1,198 @@
+import React from 'react';
+
+// SEO configuration for the site
+export const seoConfig = {
+  siteName: "Agency Leo Services",
+  siteUrl: "https://automapros.ca",
+  defaultTitle: "Agency Leo Services - Solutions d'Automatisation IA pour PME | Montréal",
+  defaultDescription: "Agence de consulting et d'automatisation IA pour PME à Montréal. Chatbots intelligents 24/7, workflows automatisés, prospection IA. ROI rapide et mesurable. Consultation gratuite.",
+  defaultKeywords: "automatisation IA Montréal, chatbot WhatsApp, automatisation PME Québec, prospection automatisée, n8n Make Zapier, intelligence artificielle entreprise, consultant IA Montréal",
+  locale: "fr_CA",
+  twitterHandle: "@agencyleoservices",
+  ogImage: "https://automapros.ca/og-image.png"
+};
+
+export const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Agency Leo Services",
+  "alternateName": "Agency LeoServices",
+  "url": "https://automapros.ca",
+  "logo": "https://automapros.ca/logo.png",
+  "image": "https://automapros.ca/og-image.png",
+  "email": "agency-leoservices@zohomailcloud.ca",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "agency-leoservices@zohomailcloud.ca",
+    "telephone": "+1-438-334-0328",
+    "contactType": "customer service",
+    "areaServed": "CA",
+    "availableLanguage": ["fr", "en"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "18",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/agency-leo-services",
+    "https://www.google.com/maps"
+  ],
+  "description": "Agence de consulting et d'automatisation IA spécialisée dans la croissance des PME et des agences. Solutions complètes : chatbots, automatisations CRM, prospection, systèmes IA sur mesure.",
+  "priceRange": "$$$",
+  "openingHours": "Mo-Fr 09:00-18:00"
+};
+
+export const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Automatisation IA",
+  "provider": {
+    "@type": "Organization",
+    "name": "Agency Leo Services"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Canada"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services d'automatisation IA",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Chatbots IA 24/7",
+          "description": "Répondez à vos clients instantanément avec des chatbots intelligents"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automatisation des Flux",
+          "description": "Connectez vos outils et automatisez vos processus métier"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Prospection Automatisée",
+          "description": "Générez des leads qualifiés automatiquement"
+        }
+      }
+    ]
+  }
+};
+
+export default function SEOHead({ 
+  title, 
+  description, 
+  keywords,
+  canonicalUrl,
+  ogType = "website"
+}) {
+  // This component is for documentation - actual meta tags should be set via document.title
+  // and meta tag manipulation in useEffect
+  
+  React.useEffect(() => {
+    document.title = title || seoConfig.defaultTitle;
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = description || seoConfig.defaultDescription;
+
+    // Update meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.name = 'keywords';
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.content = keywords || seoConfig.defaultKeywords;
+
+    // Add Open Graph meta tags
+    const ogMetas = [
+      { property: 'og:type', content: ogType },
+      { property: 'og:title', content: title || seoConfig.defaultTitle },
+      { property: 'og:description', content: description || seoConfig.defaultDescription },
+      { property: 'og:url', content: canonicalUrl || seoConfig.siteUrl },
+      { property: 'og:image', content: seoConfig.ogImage },
+      { property: 'og:site_name', content: seoConfig.siteName },
+      { property: 'og:locale', content: seoConfig.locale }
+    ];
+
+    ogMetas.forEach(({ property, content }) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    });
+
+    // Add Twitter Card meta tags
+    const twitterMetas = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: seoConfig.twitterHandle },
+      { name: 'twitter:title', content: title || seoConfig.defaultTitle },
+      { name: 'twitter:description', content: description || seoConfig.defaultDescription },
+      { name: 'twitter:image', content: seoConfig.ogImage }
+    ];
+
+    twitterMetas.forEach(({ name, content }) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = name;
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    });
+
+    // Add canonical link
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl || seoConfig.siteUrl;
+
+    // Add author meta
+    let author = document.querySelector('meta[name="author"]');
+    if (!author) {
+      author = document.createElement('meta');
+      author.name = 'author';
+      document.head.appendChild(author);
+    }
+    author.content = 'Agency Leo Services';
+
+    // Add structured data
+    let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredDataScript) {
+      structuredDataScript = document.createElement('script');
+      structuredDataScript.type = 'application/ld+json';
+      document.head.appendChild(structuredDataScript);
+    }
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+
+  }, [title, description, keywords, canonicalUrl, ogType]);
+
+ 
