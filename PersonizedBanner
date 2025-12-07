@@ -1,0 +1,164 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { 
+  Sparkles, 
+  ArrowRight, 
+  Clock, 
+  TrendingUp,
+  Gift,
+  Zap,
+  X
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+
+const getVisitorSegment = () => {
+  const journey = JSON.parse(sessionStorage.getItem('userJourney') || '{}');
+  const visitCount = parseInt(localStorage.getItem('visitCount') || '0') + 1;
+  localStorage.setItem('visitCount', visitCount.toString());
+  
+  const lastVisit = localStorage.getItem('lastVisit');
+  const now = new Date().toISOString();
+  localStorage.setItem('lastVisit', now);
+  
+  const isReturning = visitCount > 1;
+  const hasViewedServices = journey.hasViewedServices;
+  const hasUsedROI = journey.hasUsedROI;
+  const pagesVisited = journey.pagesVisited?.length || 0;
+  
+  if (hasUsedROI && pagesVisited > 3) return 'hot_lead';
+  if (hasViewedServices) return 'interested';
+  if (isReturning) return 'returning';
+  return 'new';
+};
+
+const bannerContent = {
+  new: {
+    icon: Gift,
+    title: "Bienvenue !",
+    message: "Découvrez comment l'IA peut transformer votre entreprise",
+    cta: "Consultation Gratuite",
+    ctaLink: "#contact",
+    color: "from-[#1a1a1a] to-[#2a2a2a] border-b border-[#00ff41]/30"
+  },
+  returning: {
+    icon: Sparkles,
+    title: "Content de vous revoir !",
+    message: "Prêt à passer à l'action ? Nos experts vous attendent",
+    cta: "Reprendre où vous en étiez",
+    ctaLink: "Services",
+    color: "from-[#1a1a1a] to-[#2a2a2a] border-b border-blue-500/30"
+  },
+  interested: {
+    icon: TrendingUp,
+    title: "Intéressé par nos services ?",
+    message: "Calculez vos économies potentielles avec notre outil ROI",
+    cta: "Calculer mon ROI",
+    ctaLink: "#roi-calculator",
+    color: "from-[#1a1a1a] to-[#2a2a2a] border-b border-purple-500/30"
+  },
+  hot_lead: {
+    icon: Zap,
+    title: "Vous êtes presque prêt !",
+    message: "Réservez votre consultation gratuite de 30 minutes",
+    cta: "Réserver maintenant",
+    ctaLink: "Contact",
+    color: "from-[#1a1a1a] to-[#2a2a2a] border-b border-orange-500/30"
+  }
+};
+
+export default function PersonalizedBanner() {
+  const [segment, setSegment] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  useEffect(() => {
+    const dismissed = sessionStorage.getItem('bannerDismissed');
+    if (dismissed) return;
+    
+    const timer = setTimeout(() => {
+      const visitorSegment = getVisitorSegment();
+      setSegment(visitorSegment);
+      setIsVisible(true);
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+    setIsDismissed(true);
+    sessionStorage.setItem('bannerDismissed', 'true');
+  };
+
+  const handleAction = () => {
+    const content = bannerContent[segment];
+    if (content.ctaLink.startsWith('#')) {
+      document.getElementById(content.ctaLink.slice(1))?.scrollIntoView({ behavior: 'smooth' });
+      handleDismiss();
+    }
+  };
+
+  if (!segment || isDismissed) return null;
+
+  const content = bannerContent[segment];
+  const Icon = content.icon;
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          className="fixed top-16 left-0 right-0 z-40"
+        >
+          <div className={`bg-gradient-to-r ${content.color} py-3 px-4 shadow-lg`}>
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex w-10 h-10 rounded-full bg-[#00ff41]/10 items-center justify-center">
+                  <Icon className="w-5 h-5 text-[#00ff41]" />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm sm:text-base">{content.title}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">{content.message}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                {content.ctaLink.startsWith('#') ? (
+                  <Button
+                    onClick={handleAction}
+                    size="sm"
+                    className="bg-[#00ff41] text-black hover:bg-[#00cc33] font-semibold text-xs sm:text-sm whitespace-nowrap"
+                  >
+                    {content.cta}
+                    <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
+                  </Button>
+                ) : (
+                  <Button
+                    asChild
+                    size="sm"
+                    className="bg-[#00ff41] text-black hover:bg-[#00cc33] font-semibold text-xs sm:text-sm whitespace-nowrap"
+                  >
+                    <Link to={createPageUrl(content.ctaLink)}>
+                      {content.cta}
+                      <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
+                    </Link>
+                  </Button>
+                )}
+                <button
+                  onClick={handleDismiss}
+                  className="p-1 text-gray-500 hover:text-white transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
