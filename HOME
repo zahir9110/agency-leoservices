@@ -1,0 +1,578 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { 
+  Bot, 
+  Zap, 
+  MessageSquare, 
+  Calendar, 
+  TrendingUp, 
+  Shield,
+  Mail,
+  MapPin,
+  ArrowRight,
+  CheckCircle,
+  Sparkles
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import SmartChatBot from '@/components/SmartChatBot';
+import MobileMenu from '@/components/MobileMenu';
+import AdvantagesSection from '@/components/AdvantagesSection';
+import ToolsSection from '@/components/ToolsSection';
+import ROICalculator from '@/components/ROICalculator';
+import SEOHead from '@/components/SEOHead';
+import DynamicTestimonials from '@/components/DynamicTestimonials';
+import ResourcesSection from '@/components/ResourcesSection';
+import PersonalizedBanner from '@/components/PersonalizedBanner';
+import CaseStudiesSection from '@/components/CaseStudiesSection';
+
+export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const services = [
+    {
+      icon: Bot,
+      title: "Chatbots IA 24/7",
+      description: "Répondez à vos clients instantanément avec des chatbots intelligents sur WhatsApp, Messenger et votre site web.",
+      features: ["Réponses instantanées", "Multi-plateforme", "Apprentissage continu"]
+    },
+    {
+      icon: Zap,
+      title: "Automatisation des Flux",
+      description: "Connectez vos outils et automatisez vos processus métier avec n8n, Make et Zapier.",
+      features: ["Intégrations illimitées", "Workflows personnalisés", "Zéro code"]
+    },
+    {
+      icon: Calendar,
+      title: "Gestion de Rendez-vous",
+      description: "Automatisez la prise de rendez-vous et les rappels pour ne plus jamais manquer une opportunité.",
+      features: ["Synchronisation calendrier", "Rappels automatiques", "Confirmations SMS"]
+    },
+    {
+      icon: TrendingUp,
+      title: "Prospection Automatisée",
+      description: "Générez des leads qualifiés automatiquement avec des campagnes intelligentes.",
+      features: ["Scraping intelligent", "Séquences email", "Scoring leads"]
+    },
+    {
+      icon: MessageSquare,
+      title: "Service Client Automatisé",
+      description: "Offrez un support client exceptionnel sans augmenter vos effectifs.",
+      features: ["Tickets automatisés", "Escalade intelligente", "Base de connaissances"]
+    },
+    {
+      icon: Shield,
+      title: "Intégrations Sur-Mesure",
+      description: "Connectez tous vos outils existants pour une expérience unifiée.",
+      features: ["API personnalisées", "CRM integration", "ERP connection"]
+    }
+  ];
+
+  const stats = [
+    { value: "70%", label: "Temps Économisé" },
+    { value: "24/7", label: "Disponibilité" },
+    { value: "3-5j", label: "Mise en Place" },
+    { value: "100%", label: "Sur-Mesure" }
+  ];
+
+
+
+  const faqs = [
+    {
+      question: "Qu'est-ce qu'Agency Leo Services ?",
+      answer: "Agency Leo Services est une entreprise spécialisée dans la mise en place de solutions automatisées basées sur l'intelligence artificielle. Nous aidons les PME, agences et indépendants à améliorer leur service client, leur prospection et leur gestion quotidienne grâce à des outils modernes, simples et efficaces."
+    },
+    {
+      question: "À qui s'adressent vos services ?",
+      answer: "Nos solutions sont conçues pour les PME, agences marketing, freelances, cabinets de services, commerces locaux et startups souhaitant optimiser leur gestion et offrir une meilleure expérience client — sans avoir besoin de compétences techniques."
+    },
+    {
+      question: "Combien de temps faut-il pour la mise en place ?",
+      answer: "Tout dépend du niveau d'automatisation souhaité. En général : Solutions simples : 3 à 5 jours. Systèmes complets (multi-canaux) : 1 à 3 semaines. Nous travaillons efficacement pour vous livrer des résultats rapidement."
+    },
+    {
+      question: "L'installation est-elle compliquée ?",
+      answer: "Pas du tout. Nous nous chargeons de tout ! Notre équipe configure les outils et les automatismes selon votre entreprise. Vous recevez ensuite une démonstration claire et une formation simple pour prendre la main en toute confiance."
+    },
+    {
+      question: "Proposez-vous un support après installation ?",
+      answer: "Oui. Nous offrons un support continu après la mise en place de vos automatisations. Vous bénéficiez d'un suivi technique, de mises à jour régulières et de conseils pour faire évoluer votre système selon vos besoins."
+    }
+  ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setFormData({ name: '', email: '', company: '', message: '' });
+    alert('Message envoyé avec succès! Nous vous contacterons sous 24h.');
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <PersonalizedBanner />
+      <SEOHead 
+        title="Agency Leo Services - Solutions d'Automatisation IA pour PME | Montréal"
+        description="Automatisez votre service client, prospection et gestion avec l'IA. Chatbots intelligents 24/7, flux automatisés pour PME à Montréal."
+        keywords="automatisation IA, chatbot, PME Montréal, n8n, make, zapier"
+      />
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#00ff41]/30 shadow-[0_0_20px_rgba(0,255,65,0.2)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <motion.a 
+              href="#top"
+              className="flex items-center gap-2 text-[#00ff41] font-bold text-xl"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Bot className="w-7 h-7 animate-pulse" />
+              <span className="font-mono tracking-tight">Agency Leo</span>
+            </motion.a>
+            <div className="flex items-center gap-4">
+              <Button 
+                asChild
+                className="hidden sm:flex bg-[#00ff41] text-black hover:bg-[#00cc33] font-semibold shadow-[0_0_20px_rgba(0,255,65,0.4)]"
+              >
+                <a href="#contact">Consultation Gratuite</a>
+              </Button>
+              <MobileMenu />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-[#001a0d]" />
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, #00ff41 1px, transparent 0)',
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              <Sparkles className="inline w-4 h-4 mr-2" />
+              Support Continu & Personnalisation Totale
+            </span>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight">
+              Solutions d'<span className="text-[#00ff41] drop-shadow-[0_0_30px_rgba(0,255,65,0.5)]">Automatisation IA</span>
+              <br />
+              <span className="text-white">pour optimiser votre gestion quotidienne</span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10">
+              Transformez chaque interaction client en opportunité de revenu. Nos systèmes IA capturent vos prospects 24/7, 
+              automatisent les tâches répétitives et vous donnent un <span className="text-[#00ff41] font-semibold">avantage compétitif durable</span>.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg"
+                className="bg-[#00ff41] text-black hover:bg-[#00cc33] font-bold text-lg px-8 py-6 shadow-[0_0_30px_rgba(0,255,65,0.4)] transition-all hover:shadow-[0_0_50px_rgba(0,255,65,0.6)]"
+                asChild
+              >
+                <a href="#contact">
+                  <Sparkles className="mr-2 w-5 h-5" />
+                  Démarrer un Projet
+                </a>
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-[#00ff41]/50 text-[#00ff41] hover:bg-[#00ff41]/10 font-semibold text-lg px-8 py-6"
+                asChild
+              >
+                <a href="#faq">En Savoir Plus</a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-[#1a1a1a] border-y border-[#00ff41]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-4xl sm:text-5xl font-black text-[#00ff41] mb-2 drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advantages Section */}
+      <AdvantagesSection />
+
+      {/* Services Section */}
+      <section id="services" className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              Nos Solutions
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+              Nos Services d'<span className="text-[#00ff41]">Automatisation</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Solutions complètes adaptées à vos besoins spécifiques
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                className="group p-6 bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl hover:border-[#00ff41]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,65,0.15)]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-14 h-14 rounded-xl bg-[#00ff41]/10 flex items-center justify-center mb-5 group-hover:bg-[#00ff41]/20 transition-colors">
+                  <service.icon className="w-7 h-7 text-[#00ff41]" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-gray-400 mb-4">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-sm text-gray-500">
+                      <CheckCircle className="w-4 h-4 text-[#00ff41] mr-2 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Link 
+                  to={createPageUrl('Services')}
+                  className="inline-flex items-center gap-2 mt-4 text-[#00ff41] text-sm font-semibold hover:underline"
+                >
+                  Découvrir
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button 
+              asChild
+              size="lg"
+              className="bg-[#00ff41] text-black hover:bg-[#00cc33] font-bold px-8 shadow-[0_0_20px_rgba(0,255,65,0.3)]"
+            >
+              <Link to={createPageUrl('Services')}>
+                Voir tous les services & tarifs
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Tools Section */}
+      <ToolsSection />
+
+      {/* ROI Calculator */}
+      <ROICalculator />
+
+      {/* Case Studies Section */}
+      <CaseStudiesSection />
+
+      {/* Process Section */}
+      <section className="py-20 lg:py-28 bg-[#0f0f0f]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              Notre Processus
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+              Notre Processus <span className="text-[#00ff41]">Simple</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              De la consultation à l'implémentation complète
+            </p>
+          </motion.div>
+
+          <div className="space-y-8">
+            {[
+              {
+                step: "1",
+                title: "Analyse de vos Besoins",
+                description: "Consultation gratuite pour comprendre vos objectifs, vos processus actuels et identifier les opportunités d'automatisation prioritaires."
+              },
+              {
+                step: "2",
+                title: "Configuration & Personnalisation",
+                description: "Notre équipe configure tous les outils et crée des flux automatisés entièrement personnalisés selon votre image et vos besoins spécifiques."
+              },
+              {
+                step: "3",
+                title: "Formation & Support Continu",
+                description: "Démonstration claire, formation simple et support technique permanent pour vous accompagner et faire évoluer votre système."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="flex gap-6 items-start"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#00ff41] flex items-center justify-center text-black font-black text-2xl flex-shrink-0 shadow-[0_0_30px_rgba(0,255,65,0.4)]">
+                  {item.step}
+                </div>
+                <div className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dynamic Testimonials Section */}
+      <DynamicTestimonials />
+
+      {/* Resources Section */}
+      <ResourcesSection />
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 lg:py-28 bg-[#0f0f0f]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+              Questions <span className="text-[#00ff41]">Fréquentes</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Tout ce que vous devez savoir sur nos services
+            </p>
+          </motion.div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-6 data-[state=open]:border-[#00ff41]/50"
+              >
+                <AccordionTrigger className="text-left text-white hover:text-[#00ff41] hover:no-underline py-5">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-400 pb-5">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+              Prêt à <span className="text-[#00ff41]">automatiser</span> votre entreprise?
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Transformez votre gestion quotidienne avec l'intelligence artificielle.
+              Consultation gratuite et personnalisation complète garanties.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#00ff41]/10 flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-[#00ff41]" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-500">Email</div>
+                    <a href="mailto:agency-leoservices@zohomailcloud.ca" className="text-white hover:text-[#00ff41] font-medium">
+                        agency-leoservices@zohomailcloud.ca
+                      </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#00ff41]/10 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-[#00ff41]" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-500">Adresse</div>
+                        <div className="text-white font-medium">Montréal, QC, Canada</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <form onSubmit={handleSubmit} className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl p-6 sm:p-8">
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">Nom complet</label>
+                    <Input
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      required
+                      className="bg-[#0a0a0a] border-[#2a2a2a] text-white focus:border-[#00ff41] focus:ring-[#00ff41]/20"
+                      placeholder="Jean Dupont"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                    <Input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      required
+                      className="bg-[#0a0a0a] border-[#2a2a2a] text-white focus:border-[#00ff41] focus:ring-[#00ff41]/20"
+                      placeholder="jean@entreprise.ca"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">Entreprise</label>
+                    <Input
+                      value={formData.company}
+                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      className="bg-[#0a0a0a] border-[#2a2a2a] text-white focus:border-[#00ff41] focus:ring-[#00ff41]/20"
+                      placeholder="Nom de votre entreprise"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                    <Textarea
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      required
+                      rows={4}
+                      className="bg-[#0a0a0a] border-[#2a2a2a] text-white focus:border-[#00ff41] focus:ring-[#00ff41]/20 resize-none"
+                      placeholder="Décrivez votre projet ou vos besoins en automatisation..."
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#00ff41] text-black hover:bg-[#00cc33] font-bold py-6 text-lg shadow-[0_0_20px_rgba(0,255,65,0.3)] transition-all hover:shadow-[0_0_30px_rgba(0,255,65,0.5)]"
+                  >
+                    {isSubmitting ? 'Envoi en cours...' : 'Contactez-nous Maintenant'}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-black border-t border-[#2a2a2a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-6 h-6" />
+              <span className="font-mono">Agency Leo Services</span>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+              <Link to={createPageUrl('Services')} className="hover:text-[#00ff41] transition-colors">
+                Services
+              </Link>
+              <Link to={createPageUrl('Contact')} className="hover:text-[#00ff41] transition-colors">
+                Contact
+              </Link>
+              <Link to={createPageUrl('Documentation')} className="hover:text-[#00ff41] transition-colors">
+                Documentation
+              </Link>
+              <Link to={createPageUrl('About')} className="hover:text-[#00ff41] transition-colors">
+                À propos
+              </Link>
+              <Link to={createPageUrl('MentionsLegales')} className="hover:text-[#00ff41] transition-colors">
+                Mentions Légales
+              </Link>
+              <Link to={createPageUrl('PolitiqueConfidentialite')} className="hover:text-[#00ff41] transition-colors">
+                Confidentialité
+              </Link>
+            </div>
+            
+            <div className="text-sm text-gray-600">
+              © 2025 Agency Leo Services. Tous droits réservés.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Smart ChatBot */}
+      <SmartChatBot />
+    </div>
+  );
