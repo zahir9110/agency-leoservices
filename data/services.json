@@ -1,0 +1,100 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "titre": "Chatbot IA Intelligent",
+      "description": "Assistant virtuel 24/7 pour améliorer votre relation client et automatiser les réponses.",
+      "icon": "🤖",
+      "prix": "À partir de 499€/mois",
+      "features": [
+        "Réponses automatiques en temps réel",
+        "Apprentissage continu",
+        "Intégration multicanale",
+        "Analyse des conversations",
+        "Support en plusieurs langues"
+      ],
+      "categorie": "IA",
+      "populaire": true
+    },
+    {
+      "id": 2,
+      "titre": "Automatisation des Processus",
+      "description": "Automatisez vos tâches répétitives et gagnez jusqu'à 60% de temps.",
+      "icon": "⚙️",
+      "prix": "À partir de 799€/mois",
+      "features": [
+        "Automatisation des workflows",
+        "Intégration avec vos outils existants",
+        "Réduction des erreurs manuelles",
+        "Tableaux de bord en temps réel",
+        "ROI mesurable"
+      ],
+      "categorie": "Automatisation",
+      "populaire": true
+    },
+    {
+      "id": 3,
+      "titre": "CRM Intelligent",
+      "description": "Gérez vos clients avec intelligence et optimisez vos ventes.",
+      "icon": "📊",
+      "prix": "À partir de 599€/mois",
+      "features": [
+        "Gestion complète des contacts",
+        "Prédiction des ventes",
+        "Automatisation du suivi",
+        "Reporting avancé",
+        "Intégration email"
+      ],
+      "categorie": "CRM",
+      "populaire": false
+    },
+    {
+      "id": 4,
+      "titre": "Analyse de Données IA",
+      "description": "Transformez vos données en insights actionnables avec l'IA.",
+      "icon": "📈",
+      "prix": "À partir de 899€/mois",
+      "features": [
+        "Analyse prédictive",
+        "Visualisations interactives",
+        "Détection d'anomalies",
+        "Recommandations automatiques",
+        "Rapports personnalisés"
+      ],
+      "categorie": "Analytics",
+      "populaire": true
+    },
+    {
+      "id": 5,
+      "titre": "Assistant Email IA",
+      "description": "Automatisez la gestion de vos emails avec intelligence artificielle.",
+      "icon": "📧",
+      "prix": "À partir de 399€/mois",
+      "features": [
+        "Tri automatique des emails",
+        "Réponses suggérées",
+        "Détection de priorités",
+        "Archivage intelligent",
+        "Intégration calendrier"
+      ],
+      "categorie": "Productivité",
+      "populaire": false
+    },
+    {
+      "id": 6,
+      "titre": "Formation IA sur Mesure",
+      "description": "Formez vos équipes aux outils d'IA et à l'automatisation.",
+      "icon": "🎓",
+      "prix": "Sur devis",
+      "features": [
+        "Formation personnalisée",
+        "Ateliers pratiques",
+        "Support post-formation",
+        "Certification",
+        "Matériel pédagogique inclus"
+      ],
+      "categorie": "Formation",
+      "populaire": false
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+# =================================
+# DEPENDENCIES
+# =================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# =================================
+# ENVIRONMENT VARIABLES
+# =================================
+.env
+.env.local
+.env.production
+.env.*.local
+
+# =================================
+# LOGS
+# =================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# =================================
+# OS FILES
+# =================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# =================================
+# IDE
+# =================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+.sublime-project
+.sublime-workspace
+
+# =================================
+# BUILD & DIST
+# =================================
+dist/
+build/
+.cache/
+
+# =================================
+# TEMP FILES
+# =================================
+tmp/
+temp/
+*.tmp
+
+# =================================
+# DATA FILES (à décommenter si vous ne voulez pas versionner les données)
+# =================================
+# data/contacts.json
+
+# =================================
+# BACKUPS
+# =================================
+*.backup
+backup-*/
+
+# =================================
+# PM2
+# =================================
+.pm2/
+
+# =================================
+# COVERAGE
+# =================================
+coverage/
+.nyc_output/
+
+# =================================
+# MISC
+# =================================
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map

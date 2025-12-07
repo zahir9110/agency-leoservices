@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agency Leo Services - Solutions d'automatisation IA pour entreprises. Chatbots intelligents, CRM automatisé, analyse de données.">
+    <meta name="keywords" content="IA, automatisation, chatbot, CRM, agence digitale, intelligence artificielle">
+    <title>Agency Leo Services - Automatisation IA pour Entreprises</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agencyleo.com/">
+    <meta property="og:title" content="Agency Leo Services - Automatisation IA">
+    <meta property="og:description" content="Transformez votre entreprise avec nos solutions d'automatisation IA">
+    <meta property="og:image" content="https://agencyleo.com/images/og-image.jpg">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="/" class="logo">
+                        <i class="fas fa-robot"></i>
+                        <span>Agency Leo</span>
+                    </a>
+
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#avantages" class="nav-link">Avantages</a></li>
+                        <li><a href="#avis" class="nav-link">Avis</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <button class="nav-toggle" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transformez Votre Entreprise avec l'<span class="highlight">IA</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Solutions d'automatisation intelligentes pour maximiser votre productivité et réduire vos coûts
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Demander une démo</a>
+                    <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-icon"><i class="fas fa-robot"></i></div>
+            <div class="floating-icon"><i class="fas fa-brain"></i></div>
+            <div class="floating-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Services</h2>
+                <p class="section-subtitle">Des solutions sur mesure pour automatiser votre entreprise</p>
+            </div>
+
+            <div id="services-grid" class="services-grid">
+                <!-- Services chargés dynamiquement via API -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Chargement des services...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages Section -->
+    <section id="avantages" class="advantages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi Choisir Agency Leo ?</h2>
+            </div>
+
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Rapidité</h3>
+                    <p>Mise en œuvre rapide de vos solutions en 2-6 semaines</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité</h3>
+                    <p>Sécurité maximale et conformité RGPD garantie</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>ROI Prouvé</h3>
+                    <p>Retour sur investissement mesurable dès 3 mois</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support 24/7</h3>
+                    <p>Assistance technique disponible à tout moment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis Clients Section -->
+    <section id="avis" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ils Nous Font Confiance</h2>
+                <p class="section-subtitle">Découvrez les retours d'expérience de nos clients</p>
+            </div>
+
+            <div id="testimonials-container" class="testimonials-grid">
+                <!-- Avis chargés dynamiquement via API -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Chargement des avis...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contactez-Nous</h2>
+                <p class="section-subtitle">Parlons de votre projet d'automatisation</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>contact@agencyleo.com</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Téléphone</h3>
+                        <p>+33 1 23 45 67 89</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Adresse</h3>
+                        <p>Paris, France</p>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entreprise">Entreprise</label>
+                        <input type="text" id="entreprise" name="entreprise">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <span>Envoyer le message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <div id="form-message" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Agency Leo Services</h3>
+                    <p>Votre partenaire en automatisation IA</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#avis">Avis</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="/mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="/politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Agency Leo Services. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>Assistant Leo</span>
+            </div>
+            <button id="chatbot-close" class="chatbot-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="message bot-message">
+                <p>Bonjour ! Je suis l'assistant virtuel d'Agency Leo. Comment puis-je vous aider ?</p>
+            </div>
+        </div>
+
+        <form id="chatbot-form" class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Tapez votre message...">
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <button id="chatbot-toggle" class="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "avis": [
+    {
+      "id": 1,
+      "rating": 5,
+      "nom": "Sophie Martin",
+      "poste": "Directrice Marketing",
+      "entreprise": "TechCorp",
+      "texte": "L'automatisation mise en place par Agency Leo a transformé notre façon de travailler. Nous gagnons 4 heures par jour en tâches répétitives. Le ROI a été atteint en moins de 3 mois !",
+      "date": "2024-11-15",
+      "visible": true
+    },
+    {
+      "id": 2,
+      "rating": 5,
+      "nom": "Pierre Dubois",
+      "poste": "CEO",
+      "entreprise": "InnoStart",
+      "texte": "Le chatbot IA a révolutionné notre service client. Nous répondons maintenant à 85% des demandes automatiquement, 24/7. Nos clients sont ravis et notre équipe peut se concentrer sur des tâches à plus forte valeur ajoutée.",
+      "date": "2024-11-10",
+      "visible": true
+    },
+    {
+      "id": 3,
+      "rating": 5,
+      "nom": "Marie Lefebvre",
+      "poste": "Responsable des Opérations",
+      "entreprise": "ServicePlus",
+      "texte": "Excellente expérience avec Agency Leo. L'équipe est professionnelle, à l'écoute et les résultats sont au rendez-vous. Le CRM intelligent nous a permis d'augmenter nos ventes de 30%.",
+      "date": "2024-11-05",
+      "visible": true
+    },
+    {
+      "id": 4,
+      "rating": 4,
+      "nom": "Jean Moreau",
+      "poste": "Directeur Général",
+      "entreprise": "Commerce Pro",
+      "texte": "Très satisfait de l'automatisation de nos processus. L'équipe Agency Leo a su comprendre nos besoins et proposer des solutions adaptées. Petit bémol sur les délais initiaux, mais le résultat final est excellent.",
+      "date": "2024-10-28",
+      "visible": true
+    },
+    {
+      "id": 5,
+      "rating": 5,
+      "nom": "Caroline Rousseau",
+      "poste": "Chef de Projet Digital",
+      "entreprise": "Digital Agency",
+      "texte": "Les outils d'analyse IA sont incroyables ! Nous avons maintenant une vision claire de nos données et pouvons prendre des décisions éclairées. Je recommande vivement Agency Leo à toutes les entreprises qui veulent se moderniser.",
+      "date": "2024-10-20",
+      "visible": true
+    },
+    {
+      "id": 6,
+      "rating": 5,
+      "nom": "Thomas Bernard",
+      "poste": "Responsable IT",
+      "entreprise": "FinTech Solutions",
+      "texte": "L'intégration des solutions Agency Leo dans notre infrastructure a été fluide. Leur expertise technique est remarquable. Le support post-déploiement est également excellent.",
+      "date": "2024-10-15",
+      "visible": true
+    }
+  ]
+}
