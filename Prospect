@@ -1,0 +1,80 @@
+{
+  "name": "Prospect",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom complet du prospect"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email du prospect"
+    },
+    "company": {
+      "type": "string",
+      "description": "Nom de l'entreprise"
+    },
+    "service_interest": {
+      "type": "string",
+      "enum": [
+        "chatbot",
+        "automation",
+        "prospection",
+        "rdv",
+        "integration",
+        "other"
+      ],
+      "description": "Service qui int\u00e9resse le prospect"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message du prospect"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "contact_form",
+        "chatbot",
+        "roi_calculator",
+        "services_page"
+      ],
+      "description": "Source de la demande"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "qualified",
+        "proposal",
+        "won",
+        "lost"
+      ],
+      "default": "new",
+      "description": "Statut du prospect"
+    },
+    "roi_estimate": {
+      "type": "number",
+      "description": "Estimation ROI calcul\u00e9e"
+    },
+    "pages_visited": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Pages visit\u00e9es par le prospect"
+    },
+    "chatbot_interactions": {
+      "type": "number",
+      "default": 0,
+      "description": "Nombre d'interactions avec le chatbot"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes internes"
+    }
+  },
+  "required": [
+    "email"
+  ]
+}
