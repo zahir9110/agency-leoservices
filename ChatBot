@@ -1,0 +1,252 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  MessageCircle, 
+  X, 
+  Send, 
+  Bot, 
+  User,
+  Loader2,
+  Sparkles,
+  ArrowRight
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { base44 } from '@/api/base44Client';
+
+const QUICK_REPLIES = [
+  { text: "Quels sont vos services?", action: "services" },
+  { text: "Combien ça coûte?", action: "pricing" },
+  { text: "Délai de mise en place?", action: "timeline" },
+  { text: "Parler à un conseiller", action: "contact" }
+];
+
+export default function ChatBot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: "Bonjour! 👋 Je suis l'assistant virtuel d'Agency Leo Services. Comment puis-je vous aider aujourd'hui?",
+      quickReplies: QUICK_REPLIES
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
+
+  const handleQuickReply = (action) => {
+    const responses = {
+      services: {
+        userMessage: "Quels sont vos services?",
+        botResponse: `Nous proposons plusieurs solutions d'automatisation IA pour les PME:
+
+🤖 **Chatbots IA 24/7** - Répondez instantanément à vos clients sur WhatsApp, Messenger et votre site web.
+
+⚡ **Automatisation des Flux** - Connectez vos outils avec n8n, Make et Zapier sans coder.
+
+📅 **Gestion de Rendez-vous** - Automatisez la prise de RDV et les rappels.
+
+📈 **Prospection Automatisée** - Générez des leads qualifiés automatiquement.
+
+💬 **Service Client Automatisé** - Support exceptionnel sans augmenter vos effectifs.
+
+🔗 **Intégrations Sur-Mesure** - Connectez tous vos outils existants.
+
+Souhaitez-vous en savoir plus sur un service en particulier?`,
+        showServicesButton: true
+      },
+      pricing: {
+        userMessage: "Combien ça coûte?",
+        botResponse: `Nos tarifs sont adaptés à chaque projet:
+
+💰 **À partir de 500$/mois** pour les solutions de base.
+
+Le prix exact dépend de:
+• La complexité de vos besoins
+• Le nombre d'intégrations requises
+• Le volume de traitement
+
+✅ **Consultation gratuite de 30 minutes** pour analyser vos besoins et vous fournir un devis personnalisé.
+
+Souhaitez-vous réserver votre consultation gratuite?`,
+        showContactButton: true
+      },
+      timeline: {
+        userMessage: "Quel est le délai de mise en place?",
+        botResponse: `⏱️ **Délai moyen: 2 à 4 semaines**
+
+Le processus comprend:
+1. **Audit initial** (1-2 jours) - Analyse de vos processus actuels
+2. **Conception** (3-5 jours) - Design de la solution sur-mesure
+3. **Développement** (1-2 semaines) - Configuration et tests
+4. **Déploiement** (2-3 jours) - Mise en production et formation
+
+Les solutions simples peuvent être déployées en moins d'une semaine!
+
+Voulez-vous démarrer avec une consultation gratuite?`,
+        showContactButton: true
+      },
+      contact: {
+        userMessage: "Je souhaite parler à un conseiller",
+        botResponse: `Parfait! Voici comment nous contacter:
+
+📧 **Email:** contact@automapros.ca
+
+Ou remplissez le formulaire de contact sur notre site pour une réponse sous 24h.
+
+Je vous redirige vers la section contact...`,
+        scrollToContact: true
+      }
+    };
+
+    const response = responses[action];
+    if (response) {
+      setMessages(prev => [...prev, { role: 'user', content: response.userMessage }]);
+      
+      setIsLoading(true);
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: response.botResponse,
+          showServicesButton: response.showServicesButton,
+          showContactButton: response.showContactButton
+        }]);
+        setIsLoading(false);
+
+        if (response.scrollToContact) {
+          setTimeout(() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            setIsOpen(false);
+          }, 2000);
+        }
+      }, 800);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage = inputValue.trim();
+    setInputValue('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      const response = await base44.integrations.Core.InvokeLLM({
+        prompt: `Tu es l'assistant virtuel d'Agency Leo Services, une agence spécialisée dans l'automatisation IA pour les PME à Montréal.
+
+Services proposés:
+- Chatbots IA 24/7 (WhatsApp, Messenger, site web)
+- Automatisation des flux (n8n, Make, Zapier)
+- Gestion de rendez-vous automatisée
+- Prospection automatisée
+- Service client automatisé
+- Intégrations sur-mesure
+
+Informations clés:
+- Prix: à partir de 500$/mois
+- Délai de mise en place: 2-4 semaines
+- Consultation gratuite de 30 minutes disponible
+- Contact: contact@automapros.ca
+- Adresse: 630 avenue Querbes, Montréal, QC
+
+Réponds de manière concise, amicale et professionnelle. Utilise des emojis avec modération. Guide l'utilisateur vers les services ou le contact quand pertinent. Réponds en français.
+
+Question de l'utilisateur: ${userMessage}`,
+        response_json_schema: {
+          type: "object",
+          properties: {
+            response: { type: "string" },
+            suggestServices: { type: "boolean" },
+            suggestContact: { type: "boolean" }
+          }
+        }
+      });
+
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: response.response,
+        showServicesButton: response.suggestServices,
+        showContactButton: response.suggestContact
+      }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: "Désolé, je rencontre un problème technique. Vous pouvez nous contacter directement au +1 (438) 334-0328 ou par email à contact@automapros.ca.",
+        showContactButton: true
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
+  return (
+    <>
+      {/* Chat Button */}
+      <motion.button
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-[#00ff41] text-black shadow-[0_0_30px_rgba(0,255,65,0.5)] flex items-center justify-center hover:scale-110 transition-transform"
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+            >
+              <X className="w-7 h-7" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              className="relative"
+            >
+              <MessageCircle className="w-7 h-7" />
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
+
+      {/* Chat Window */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+ 
