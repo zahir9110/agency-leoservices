@@ -1,0 +1,252 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { 
+  Bot, 
+  Target,
+  Users,
+  Award,
+  Heart,
+  Lightbulb,
+  Rocket,
+  ArrowRight,
+  CheckCircle,
+  Quote,
+  MapPin,
+  Calendar,
+  Sparkles
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import MobileMenu from '@/components/MobileMenu';
+import SmartChatBot from '@/components/SmartChatBot';
+
+const values = [
+  {
+    icon: Heart,
+    title: "Passion",
+    description: "Nous sommes passionnés par la technologie et son potentiel à transformer les entreprises."
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "Nous restons à la pointe des dernières avancées en IA et automatisation."
+  },
+  {
+    icon: Users,
+    title: "Proximité",
+    description: "Chaque client est unique et mérite une attention personnalisée."
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    description: "Nous visons l'excellence dans chaque projet que nous réalisons."
+  }
+];
+
+const timeline = [
+  {
+    year: "2023",
+    title: "Fondation",
+    description: "Création d'Agency Leo Services à Montréal avec une vision claire : démocratiser l'automatisation IA."
+  },
+  {
+    year: "2024",
+    title: "Croissance",
+    description: "Plus de 50 PME accompagnées et développement de solutions innovantes sur-mesure."
+  },
+  {
+    year: "2025",
+    title: "Expansion",
+    description: "Lancement de nouveaux services et extension de notre expertise à tout le Québec."
+  }
+];
+
+export default function About() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#00ff41]/30 shadow-[0_0_20px_rgba(0,255,65,0.2)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-7 h-7 animate-pulse" />
+              <span className="font-mono tracking-tight">Agency Leo</span>
+            </Link>
+            <MobileMenu />
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="py-20 lg:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-[#001a0d]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              <Sparkles className="inline w-4 h-4 mr-2" />
+              Notre Histoire
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
+              En savoir <span className="text-[#00ff41]">plus</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+              Découvrez l'équipe passionnée derrière Agency Leo Services
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-16 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-black mb-6">
+                <Target className="inline w-8 h-8 text-[#00ff41] mr-3" />
+                Notre <span className="text-[#00ff41]">Mission</span>
+              </h2>
+              <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+                Chez Agency Leo Services, nous croyons que l'automatisation IA ne devrait pas être réservée aux grandes entreprises. 
+                Notre mission est de rendre ces technologies accessibles à toutes les PME, agences et indépendants.
+              </p>
+              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                Nous concevons des solutions sur-mesure qui s'adaptent à vos besoins spécifiques, 
+                vous permettant de gagner du temps, réduire les erreurs et offrir une meilleure expérience à vos clients.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 text-[#00ff41]">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Solutions personnalisées</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#00ff41]">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Support continu</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#00ff41]">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Technologies de pointe</span>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-[#00ff41]/20 to-[#1a1a1a] border border-[#00ff41]/30 rounded-2xl p-8">
+                <Quote className="w-12 h-12 text-[#00ff41]/50 mb-4" />
+                <p className="text-xl text-white italic mb-6">
+                  "Notre objectif est simple : vous aider à travailler plus intelligemment, pas plus dur. 
+                  L'IA est là pour vous libérer du temps, pas pour vous remplacer."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-[#00ff41] flex items-center justify-center text-black font-bold text-xl">
+                    LH
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">Leocade Houndeton Boton</p>
+                    <p className="text-sm text-gray-500">Fondateur, Agency Leo Services</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-black mb-4">
+              Nos <span className="text-[#00ff41]">Valeurs</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Les principes qui guident chacune de nos actions
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                className="text-center p-6 bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl hover:border-[#00ff41]/50 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 mx-auto rounded-2xl bg-[#00ff41]/10 flex items-center justify-center mb-4">
+                  <value.icon className="w-8 h-8 text-[#00ff41]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
+                <p className="text-gray-400 text-sm">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-20 bg-[#0f0f0f]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-black mb-4">
+              <Calendar className="inline w-8 h-8 text-[#00ff41] mr-3" />
+              Notre <span className="text-[#00ff41]">Parcours</span>
+            </h2>
+          </motion.div>
+
+          <div className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[#00ff41]/30" />
+            
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative pl-20 pb-12 last:pb-0"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="absolute left-4 w-8 h-8 rounded-full bg-[#00ff41] flex items-center justify-center shadow-[0_0_20px_rgba(0,255,65,0.5)]">
+                  <Rocket className="w-4 h-4 text-black" />
+                </div>
+                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6">
+                  <span className="text-[#00ff41] font-bold text-lg">{item.year}</span>
+                  <h3 className="text-xl font-bold text-white mt-1 mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Location */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-[#00ff41]/10 to-[#1a1a1a] border border-[#00ff41]/30 rounded-2xl p-8 sm:p-12 text-center">
+            <MapPin className="w-12 h-12 text-[#00ff41] mx-auto mb-4" />
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+              Basés à <span className="text-[#00ff41]">Montréal</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+ 
