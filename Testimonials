@@ -1,0 +1,64 @@
+{
+  "name": "Testimonial",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "description": "Nom du client"
+    },
+    "company": {
+      "type": "string",
+      "description": "Nom de l'entreprise"
+    },
+    "role": {
+      "type": "string",
+      "description": "Poste du client"
+    },
+    "content": {
+      "type": "string",
+      "description": "Contenu du t\u00e9moignage"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 5,
+      "description": "Note sur 5"
+    },
+    "service_used": {
+      "type": "string",
+      "enum": [
+        "chatbot",
+        "automation",
+        "prospection",
+        "rdv",
+        "integration",
+        "all"
+      ],
+      "description": "Service utilis\u00e9"
+    },
+    "results": {
+      "type": "string",
+      "description": "R\u00e9sultats obtenus (ex: +30% leads)"
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "URL de la photo"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "T\u00e9moignage mis en avant"
+    },
+    "is_approved": {
+      "type": "boolean",
+      "default": true,
+      "description": "T\u00e9moignage approuv\u00e9 pour affichage"
+    }
+  },
+  "required": [
+    "client_name",
+    "company",
+    "content"
+  ]
+}
