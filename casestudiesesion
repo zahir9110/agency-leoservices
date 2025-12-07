@@ -1,0 +1,251 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  TrendingUp, 
+  Clock, 
+  Users, 
+  DollarSign,
+  ChevronRight,
+  Building2,
+  ShoppingBag,
+  Briefcase,
+  ArrowRight,
+  UtensilsCrossed,
+  Heart
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+
+const caseStudies = [
+  {
+    id: 1,
+    icon: Building2,
+    industry: "Agence Immobilière",
+    client: "Groupe Immobilier Montréal",
+    challenge: "Gestion manuelle des demandes clients, temps de réponse lent et perte de prospects qualifiés en dehors des heures de bureau.",
+    solution: "Chatbot IA multicanal (WhatsApp + site web) + automatisation du suivi des leads + système de prise de RDV automatisé.",
+    results: [
+      { metric: "+85%", label: "Leads qualifiés" },
+      { metric: "-70%", label: "Temps de réponse" },
+      { metric: "+40%", label: "Conversions" },
+      { metric: "24/7", label: "Disponibilité" }
+    ],
+    testimonial: "Agency Leo a transformé notre façon de gérer les prospects. On ne perd plus aucune opportunité.",
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    id: 2,
+    icon: ShoppingBag,
+    industry: "E-commerce",
+    client: "Boutique Mode Québec",
+    challenge: "Service client débordé, questions répétitives sur les produits et livraisons, panier abandonné élevé.",
+    solution: "Chatbot IA pour le support client + séquences email automatisées de récupération de panier + FAQ intelligente.",
+    results: [
+      { metric: "-60%", label: "Tickets support" },
+      { metric: "+25%", label: "Récupération panier" },
+      { metric: "15h", label: "Économisées/semaine" },
+      { metric: "+30%", label: "Satisfaction client" }
+    ],
+    testimonial: "Notre équipe peut enfin se concentrer sur les cas complexes. L'IA gère 80% des demandes courantes.",
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    id: 3,
+    icon: Briefcase,
+    industry: "Cabinet Conseil",
+    client: "Consulting Pro Services",
+    challenge: "Prospection manuelle chronophage, suivi des leads inefficace, difficultés à scaler l'acquisition client.",
+    solution: "Système de prospection automatisée + CRM intelligent + workflows de qualification + reporting automatisé.",
+    results: [
+      { metric: "2x", label: "Volume de leads" },
+      { metric: "-50%", label: "Coûts acquisition" },
+      { metric: "+45%", label: "Taux de conversion" },
+      { metric: "ROI 300%", label: "En 6 mois" }
+    ],
+    testimonial: "On génère maintenant 2x plus de leads qualifiés avec la moitié de l'effort. C'est une révolution.",
+    color: "from-orange-500 to-amber-500"
+  },
+  {
+    id: 4,
+    icon: UtensilsCrossed,
+    industry: "Restaurant",
+    client: "Restaurant Gastronomique Montréal",
+    challenge: "Gestion manuelle des réservations, réponses tardives aux avis clients, perte de réservations en dehors des heures d'ouverture.",
+    solution: "Système de réservation automatisé 24/7 + chatbot intelligent pour gérer les demandes + automatisation de la gestion des avis Google.",
+    results: [
+      { metric: "+100%", label: "Réservations" },
+      { metric: "24/7", label: "Disponibilité" },
+      { metric: "+35%", label: "Avis positifs" },
+      { metric: "-80%", label: "No-shows" }
+    ],
+    testimonial: "On a doublé le nombre de réservations en automatisant la gestion des clients, des avis et des messages. L'IA répond même quand le restaurant est fermé.",
+    color: "from-red-500 to-rose-500"
+  },
+  {
+    id: 5,
+    icon: Heart,
+    industry: "Cabinet Dentaire",
+    client: "Clinique Dentaire Montréal",
+    challenge: "Rappels de rendez-vous manuels, temps perdu au téléphone pour les prises de RDV, taux de no-shows élevé.",
+    solution: "Système de prise de RDV en ligne automatisé + rappels SMS/Email intelligents + chatbot pour les questions fréquentes.",
+    results: [
+      { metric: "-75%", label: "No-shows" },
+      { metric: "+50%", label: "Nouveaux patients" },
+      { metric: "12h", label: "Économisées/semaine" },
+      { metric: "+45%", label: "Satisfaction patient" }
+    ],
+    testimonial: "Notre équipe gagne un temps précieux. Les patients peuvent réserver en ligne à toute heure et nos rappels automatiques ont réduit drastiquement les absences.",
+    color: "from-teal-500 to-emerald-500"
+  }
+];
+
+export default function CaseStudiesSection() {
+  const [activeCase, setActiveCase] = useState(0);
+
+  return (
+    <section className="py-20 lg:py-28 bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+            <TrendingUp className="inline w-4 h-4 mr-2" />
+            Études de Cas
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+            Résultats <span className="text-[#00ff41]">Concrets</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Découvrez comment nos clients ont transformé leur entreprise grâce à l'automatisation IA
+          </p>
+        </motion.div>
+
+        {/* Case Study Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {caseStudies.map((study, index) => (
+            <button
+              key={study.id}
+              onClick={() => setActiveCase(index)}
+              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all ${
+                activeCase === index
+                  ? 'bg-[#00ff41] text-black'
+                  : 'bg-[#1a1a1a] text-gray-400 border border-[#2a2a2a] hover:border-[#00ff41]/50'
+              }`}
+            >
+              <study.icon className="w-5 h-5" />
+              {study.industry}
+            </button>
+          ))}
+        </div>
+
+        {/* Active Case Study */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCase}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl overflow-hidden"
+          >
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Left: Content */}
+              <div className="p-8 lg:p-10">
+                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${caseStudies[activeCase].color} text-white text-sm font-medium mb-4`}>
+                  {React.createElement(caseStudies[activeCase].icon, { className: "w-4 h-4" })}
+                  {caseStudies[activeCase].industry}
+                </div>
+                
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  {caseStudies[activeCase].client}
+                </h3>
+
+                <div className="space-y-5">
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#00ff41] uppercase tracking-wider mb-2">
+                      Le Défi
+                    </h4>
+                    <p className="text-gray-400">
+                      {caseStudies[activeCase].challenge}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#00ff41] uppercase tracking-wider mb-2">
+                      Notre Solution
+                    </h4>
+                    <p className="text-gray-400">
+                      {caseStudies[activeCase].solution}
+                    </p>
+                  </div>
+
+                  <blockquote className="border-l-4 border-[#00ff41] pl-4 py-2 bg-[#00ff41]/5 rounded-r-lg">
+                    <p className="text-gray-300 italic">
+                      "{caseStudies[activeCase].testimonial}"
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+
+              {/* Right: Results */}
+              <div className="bg-gradient-to-br from-[#00ff41]/10 to-transparent p-8 lg:p-10 flex flex-col justify-center">
+                <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-[#00ff41]" />
+                  Résultats Obtenus
+                </h4>
+
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {caseStudies[activeCase].results.map((result, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-4 text-center"
+                    >
+                      <div className="text-3xl font-black text-[#00ff41] mb-1">
+                        {result.metric}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {result.label}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <Button
+                  asChild
+                  className="w-full bg-[#00ff41] text-black hover:bg-[#00cc33] font-bold"
+                >
+                  <Link to={createPageUrl('Contact')}>
+                    Obtenir des résultats similaires
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-500 mb-4">
+            Ces résultats sont reproductibles pour votre entreprise.
+          </p>
+          <p className="text-white font-medium">
+            Pendant que certains hésitent, d'autres réduisent déjà leurs coûts opérationnels et doublent leur volume de leads.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
