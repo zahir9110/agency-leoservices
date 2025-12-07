@@ -42,13 +42,23 @@ const contactLimiter = rateLimit({
 app.use('/api/', limiter);
 
 // Configuration Nodemailer
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
+const transporterConfig = {
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD
   }
-});
+};
+
+// Configuration spécifique selon le service
+if (process.env.EMAIL_SERVICE === 'Zoho') {
+  transporterConfig.host = process.env.EMAIL_HOST || 'smtp.zoho.com';
+  transporterConfig.port = parseInt(process.env.EMAIL_PORT) || 465;
+  transporterConfig.secure = process.env.EMAIL_SECURE === 'true';
+} else {
+  transporterConfig.service = process.env.EMAIL_SERVICE || 'gmail';
+}
+
+const transporter = nodemailer.createTransport(transporterConfig);
 
 // Fonction pour charger les données JSON
 async function loadJSON(filename) {
