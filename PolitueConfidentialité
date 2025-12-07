@@ -1,0 +1,260 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Bot } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+
+export default function PolitiqueConfidentialite() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#00ff41]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-7 h-7" />
+              <span className="font-mono tracking-tight">Agency Leo</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Button
+            variant="outline"
+            asChild
+            className="mb-8 border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41]/10"
+          >
+            <Link to={createPageUrl('Home')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour au site
+            </Link>
+          </Button>
+
+          <div className="bg-[#1a1a1a] border border-[#00ff41]/30 rounded-2xl p-6 sm:p-10 shadow-[0_0_30px_rgba(0,255,65,0.1)]">
+            <h1 className="text-3xl sm:text-4xl font-black text-[#00ff41] mb-2 drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
+              Politique de Confidentialité
+            </h1>
+            <p className="text-[#00cc33] text-sm italic mb-8">
+              Dernière mise à jour : Novembre 2025
+            </p>
+
+            <div className="bg-[#00ff41]/5 border-l-4 border-[#00ff41] p-4 rounded-r-lg mb-8">
+              <p className="text-gray-300">
+                <strong className="text-white">Agency Leo Services</strong> s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et aux lois canadiennes sur la protection de la vie privée.
+              </p>
+            </div>
+
+            <div className="space-y-8 text-gray-300">
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  1. Responsable du Traitement des Données
+                </h2>
+                <p><strong className="text-white">Identité du responsable :</strong> Agency Leo Services</p>
+                <p><strong className="text-white">Adresse :</strong> 630 avenue Querbes, Montréal, QC H2V 3W7, Canada</p>
+                <p><strong className="text-white">Email :</strong> <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></p>
+                
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  2. Données Personnelles Collectées
+                </h2>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">2.1 Données que vous nous fournissez directement</h3>
+                <p>Lorsque vous utilisez notre site web, nous pouvons collecter les informations suivantes :</p>
+                
+                <div className="overflow-x-auto mt-4">
+                  <table className="w-full border-collapse bg-[#00ff41]/5 border border-[#2a2a2a] rounded-lg">
+                    <thead>
+                      <tr className="bg-[#00ff41]/10">
+                        <th className="p-3 text-left text-[#00ff41] font-semibold border-b border-[#2a2a2a]">Type de données</th>
+                        <th className="p-3 text-left text-[#00ff41] font-semibold border-b border-[#2a2a2a]">Exemples</th>
+                        <th className="p-3 text-left text-[#00ff41] font-semibold border-b border-[#2a2a2a]">Finalité</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3"><strong className="text-white">Données d'identité</strong></td>
+                        <td className="p-3">Nom, prénom</td>
+                        <td className="p-3">Identification et communication</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3"><strong className="text-white">Coordonnées</strong></td>
+                        <td className="p-3">Email, téléphone</td>
+                        <td className="p-3">Communication et support</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3"><strong className="text-white">Données professionnelles</strong></td>
+                        <td className="p-3">Nom de l'entreprise, fonction</td>
+                        <td className="p-3">Personnalisation du service</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3"><strong className="text-white">Messages</strong></td>
+                        <td className="p-3">Contenu des formulaires</td>
+                        <td className="p-3">Répondre à vos demandes</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-6 mb-2">2.2 Données collectées automatiquement</h3>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Données de connexion :</strong> adresse IP, type de navigateur, version du système d'exploitation</li>
+                  <li><strong className="text-white">Données de navigation :</strong> pages visitées, durée de visite, parcours utilisateur</li>
+                  <li><strong className="text-white">Données techniques :</strong> résolution d'écran, langue du navigateur, fuseau horaire</li>
+                  <li><strong className="text-white">Cookies et traceurs :</strong> identifiants de session, préférences utilisateur</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  3. Finalités et Base Légale du Traitement
+                </h2>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">3.1 Pourquoi nous utilisons vos données</h3>
+                
+                <div className="overflow-x-auto mt-4">
+                  <table className="w-full border-collapse bg-[#00ff41]/5 border border-[#2a2a2a] rounded-lg">
+                    <thead>
+                      <tr className="bg-[#00ff41]/10">
+                        <th className="p-3 text-left text-[#00ff41] font-semibold border-b border-[#2a2a2a]">Finalité</th>
+                        <th className="p-3 text-left text-[#00ff41] font-semibold border-b border-[#2a2a2a]">Base légale</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3">Répondre à vos demandes de contact</td>
+                        <td className="p-3">Consentement / Exécution du contrat</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3">Fournir nos services d'automatisation IA</td>
+                        <td className="p-3">Exécution du contrat</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3">Améliorer notre site web et nos services</td>
+                        <td className="p-3">Intérêt légitime</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3">Vous envoyer des newsletters (avec opt-in)</td>
+                        <td className="p-3">Consentement</td>
+                      </tr>
+                      <tr className="border-b border-[#2a2a2a]">
+                        <td className="p-3">Analyser le trafic et l'utilisation du site</td>
+                        <td className="p-3">Intérêt légitime / Consentement</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">Respecter nos obligations légales</td>
+                        <td className="p-3">Obligation légale</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  4. Durée de Conservation des Données
+                </h2>
+                <p>Nous conservons vos données personnelles uniquement le temps nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Données de contact :</strong> 3 ans à compter du dernier contact</li>
+                  <li><strong className="text-white">Données clients :</strong> Durée de la relation contractuelle + 5 ans (obligations comptables)</li>
+                  <li><strong className="text-white">Données de navigation :</strong> 13 mois maximum (cookies analytiques)</li>
+                  <li><strong className="text-white">Logs de connexion :</strong> 12 mois</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  5. Vos Droits
+                </h2>
+                <p>Conformément au RGPD et aux lois canadiennes sur la protection de la vie privée, vous disposez des droits suivants :</p>
+                <ul className="list-disc list-inside ml-4 mt-4 space-y-2">
+                  <li><strong className="text-white">Droit d'accès :</strong> Obtenir confirmation que vos données sont traitées et accéder à ces données</li>
+                  <li><strong className="text-white">Droit de rectification :</strong> Corriger vos données inexactes ou incomplètes</li>
+                  <li><strong className="text-white">Droit à l'effacement :</strong> Demander la suppression de vos données dans certaines conditions</li>
+                  <li><strong className="text-white">Droit à la limitation :</strong> Demander la limitation du traitement de vos données</li>
+                  <li><strong className="text-white">Droit à la portabilité :</strong> Recevoir vos données dans un format structuré et lisible</li>
+                  <li><strong className="text-white">Droit d'opposition :</strong> Vous opposer au traitement de vos données pour des raisons légitimes</li>
+                  <li><strong className="text-white">Droit de retrait du consentement :</strong> Retirer votre consentement à tout moment</li>
+                </ul>
+                <p className="mt-4">Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  6. Partage des Données
+                </h2>
+                <p>Nous ne vendons jamais vos données personnelles. Nous pouvons partager vos données avec :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Sous-traitants techniques :</strong> hébergement, outils d'analyse, services de communication</li>
+                  <li><strong className="text-white">Partenaires commerciaux :</strong> uniquement avec votre consentement explicite</li>
+                  <li><strong className="text-white">Autorités légales :</strong> en cas d'obligation légale ou de procédure judiciaire</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  7. Sécurité des Données
+                </h2>
+                <p>Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li>Chiffrement des données en transit (SSL/TLS)</li>
+                  <li>Contrôles d'accès stricts</li>
+                  <li>Surveillance et audit réguliers</li>
+                  <li>Formation du personnel à la protection des données</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  8. Cookies
+                </h2>
+                <p>Notre site utilise des cookies pour améliorer votre expérience. Pour plus d'informations, consultez notre politique en matière de cookies dans les Mentions Légales.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  9. Transferts Internationaux
+                </h2>
+                <p>Certaines de vos données peuvent être transférées vers des pays hors du Canada (notamment les États-Unis pour l'hébergement AWS). Nous nous assurons que ces transferts sont effectués dans le respect des réglementations applicables et avec des garanties appropriées.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  10. Modifications
+                </h2>
+                <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications seront publiées sur cette page avec une nouvelle date de mise à jour.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  11. Contact
+                </h2>
+                <p>Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Email :</strong> <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></li>
+
+                  <li><strong className="text-white">Adresse :</strong> 630 avenue Querbes, Montréal, QC H2V 3W7, Canada</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-8 bg-black border-t border-[#2a2a2a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600">
+          © 2025 Agency Leo Services. Tous droits réservés.
+        </div>
+      </footer>
+    </div>
+  );
+}
