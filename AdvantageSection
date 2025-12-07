@@ -1,0 +1,156 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Clock, 
+  ShieldCheck, 
+  Heart, 
+  PiggyBank, 
+  MessageSquare, 
+  Sparkles,
+  ArrowRight
+} from 'lucide-react';
+
+const advantages = [
+  {
+    icon: Clock,
+    title: "Gain de Temps Considérable",
+    shortDesc: "Automatisez et concentrez-vous sur l'essentiel",
+    fullDesc: "Automatisez les tâches répétitives comme l'envoi d'emails, la gestion des rendez-vous et le suivi client. Libérez jusqu'à 20 heures par semaine pour vous concentrer sur le développement de votre activité et la relation client.",
+    stats: "20h/semaine économisées",
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Moins d'Erreurs Humaines",
+    shortDesc: "Systèmes précis et fiables",
+    fullDesc: "Nos systèmes automatisés garantissent une exécution parfaite à chaque fois. Fini les oublis de rendez-vous, les emails non envoyés ou les données mal saisies. Qualité constante 24h/24, 7j/7.",
+    stats: "99.9% de fiabilité",
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    icon: Heart,
+    title: "Satisfaction Client Maximale",
+    shortDesc: "Réponses instantanées 24/7",
+    fullDesc: "Vos clients obtiennent des réponses instantanées à toute heure. Suivi personnalisé automatique, confirmations immédiates et communication proactive. Transformez chaque interaction en expérience positive.",
+    stats: "+45% satisfaction",
+    color: "from-pink-500 to-rose-500"
+  },
+  {
+    icon: PiggyBank,
+    title: "Réduction des Coûts",
+    shortDesc: "Optimisez vos ressources",
+    fullDesc: "Réduisez vos coûts opérationnels de 40% en moyenne. Moins de personnel administratif nécessaire, moins d'erreurs coûteuses, et une efficacité accrue sur toute la chaîne de valeur.",
+    stats: "-40% coûts opérationnels",
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: MessageSquare,
+    title: "Communication Fluide",
+    shortDesc: "Multi-canal automatisé",
+    fullDesc: "Communiquez avec vos clients sur leur canal préféré : email, WhatsApp, SMS, Messenger. Messages personnalisés et contextuels envoyés automatiquement au bon moment.",
+    stats: "5+ canaux intégrés",
+    color: "from-purple-500 to-violet-500"
+  },
+  {
+    icon: Sparkles,
+    title: "Image Moderne & Pro",
+    shortDesc: "Démarquez-vous de la concurrence",
+    fullDesc: "Adoptez les technologies de pointe et impressionnez vos clients avec votre réactivité exemplaire. Positionnez-vous comme un leader innovant dans votre secteur.",
+    stats: "+60% perception qualité",
+    color: "from-[#00ff41] to-[#00cc33]"
+  }
+];
+
+export default function AdvantagesSection() {
+  const [flippedCards, setFlippedCards] = useState({});
+
+  const handleCardClick = (index) => {
+    setFlippedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  return (
+    <section className="py-20 lg:py-28 bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+            Pourquoi nous choisir
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+            Les <span className="text-[#00ff41]">Avantages</span> pour votre Entreprise
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Transformez votre façon de travailler avec l'automatisation intelligente
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {advantages.map((advantage, index) => (
+            <motion.div
+              key={index}
+              className="perspective-1000"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="relative h-72 cursor-pointer"
+                onClick={() => handleCardClick(index)}
+                animate={{ rotateY: flippedCards[index] ? 180 : 0 }}
+                transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {/* Front of card */}
+                <div 
+                  className="absolute inset-0 backface-hidden"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <div className="h-full p-6 bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl hover:border-[#00ff41]/50 transition-all flex flex-col group">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <advantage.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{advantage.title}</h3>
+                    <p className="text-gray-400 flex-1">{advantage.shortDesc}</p>
+                    <div className="mt-4 pt-4 border-t border-[#2a2a2a] flex items-center justify-between">
+                      <span className="text-[#00ff41] font-bold text-sm">{advantage.stats}</span>
+                      <span className="text-gray-500 text-sm flex items-center gap-1">
+                        Cliquez pour détails
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Back of card */}
+                <div 
+                  className="absolute inset-0 backface-hidden"
+                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                >
+                  <div className={`h-full p-6 bg-gradient-to-br ${advantage.color} rounded-2xl flex flex-col`}>
+                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
+                      <advantage.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">{advantage.title}</h3>
+                    <p className="text-white/90 flex-1 text-sm leading-relaxed">{advantage.fullDesc}</p>
+                    <div className="mt-4 pt-4 border-t border-white/20 flex items-center justify-between">
+                      <span className="text-white font-bold">{advantage.stats}</span>
+                      <span className="text-white/70 text-sm">Cliquez pour fermer</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
