@@ -1,0 +1,382 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { 
+  Bot, 
+  Zap, 
+  MessageSquare, 
+  Calendar, 
+  TrendingUp, 
+  Shield,
+  Check,
+  Star,
+  ArrowRight,
+  Sparkles
+} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import MobileMenu from '@/components/MobileMenu';
+import SmartChatBot from '@/components/SmartChatBot';
+
+const services = [
+  {
+    icon: Bot,
+    title: "Chatbots & Assistants IA",
+    serviceKey: "chatbot",
+    description: "Réponses automatiques intelligentes à vos clients 24/7. Intégration de ChatGPT et Claude.ai pour des conversations naturelles et contextuelles.",
+    benefits: "Réduisez jusqu'à 60% des appels entrants, améliorez la satisfaction client et ne manquez plus jamais une opportunité — même en dehors des heures de bureau.",
+    features: [
+      "Disponible 24h/24, 7j/7",
+      "Multi-plateforme (WhatsApp, Messenger, Site web)",
+      "Apprentissage continu",
+      "Escalade intelligente vers humain"
+    ]
+  },
+  {
+    icon: Mail,
+    title: "Prospection Email Intelligente",
+    serviceKey: "prospection",
+    description: "Automatisation de vos campagnes de prospection avec personnalisation avancée et suivi des performances en temps réel.",
+    benefits: "Générez 30% de leads qualifiés en plus grâce à des séquences personnalisées qui travaillent pour vous 24/7, sans effort manuel.",
+    features: [
+      "Séquences email automatisées",
+      "Personnalisation dynamique",
+      "A/B testing intégré",
+      "Analytics détaillés"
+    ]
+  },
+  {
+    icon: Calendar,
+    title: "Gestion des Rendez-vous",
+    serviceKey: "rdv",
+    description: "Système automatisé de prise de rendez-vous, rappels intelligents et gestion complète de votre agenda professionnel.",
+    benefits: "Éliminez les no-shows avec des rappels automatiques et permettez à vos clients de réserver à tout moment — libérez votre temps pour ce qui compte vraiment.",
+    features: [
+      "Booking en ligne 24/7",
+      "Rappels SMS/Email automatiques",
+      "Synchronisation calendriers",
+      "Confirmations instantanées"
+    ]
+  },
+  {
+    icon: TrendingUp,
+    title: "Suivi Client & Reporting",
+    serviceKey: "automation",
+    description: "Tableaux de bord automatisés, rapports personnalisés et analytics en temps réel pour piloter votre activité.",
+    benefits: "Prenez des décisions éclairées avec des données en temps réel. Identifiez les tendances et optimisez votre performance sans passer des heures sur Excel.",
+    features: [
+      "Dashboards temps réel",
+      "Rapports automatiques",
+      "KPIs personnalisés",
+      "Alertes intelligentes"
+    ]
+  },
+  {
+    icon: Zap,
+    title: "Intégrations Multi-Outils",
+    serviceKey: "integration",
+    description: "Connexion de tous vos outils (CRM, email, calendrier, paiement) pour un écosystème fluide et automatisé.",
+    benefits: "Fini les doubles saisies et les erreurs ! Vos outils communiquent enfin ensemble pour un flux de travail sans friction.",
+    features: [
+      "500+ intégrations disponibles",
+      "APIs personnalisées",
+      "Synchronisation temps réel",
+      "Zéro code requis"
+    ]
+  },
+  {
+    icon: Shield,
+    title: "Flux Automatisés Sur-Mesure",
+    serviceKey: "automation",
+    description: "Création de workflows sur-mesure adaptés à vos processus métiers avec n8n, Make et les meilleures technologies.",
+    benefits: "Économisez 15-20h par semaine en automatisant vos tâches répétitives. Concentrez-vous sur la croissance, pas sur l'administration.",
+    features: [
+      "Workflows personnalisés",
+      "Logique conditionnelle",
+      "Déclencheurs multiples",
+      "Maintenance incluse"
+    ]
+  }
+];
+
+const pricingPlans = [
+  {
+    name: "Starter",
+    price: "500",
+    period: "/mois",
+    description: "Idéal pour débuter avec l'automatisation",
+    features: [
+      "1 chatbot basique",
+      "Jusqu'à 500 conversations/mois",
+      "1 intégration incluse",
+      "Support email",
+      "Tableau de bord basique"
+    ],
+    popular: false,
+    cta: "Commencer"
+  },
+  {
+    name: "Business",
+    price: "1200",
+    period: "/mois",
+    description: "La solution complète pour PME",
+    features: [
+      "Chatbot IA avancé (GPT-4)",
+      "Conversations illimitées",
+      "5 intégrations incluses",
+      "Automatisation emails",
+      "Gestion RDV complète",
+      "Support prioritaire",
+      "Analytics avancés"
+    ],
+    popular: true,
+    cta: "Choisir Business"
+  },
+  {
+    name: "Enterprise",
+    price: "Sur mesure",
+    period: "",
+    description: "Solution personnalisée pour grandes entreprises",
+    features: [
+      "Tout Business +",
+      "Intégrations illimitées",
+      "Workflows sur-mesure",
+      "API dédiée",
+      "Account manager dédié",
+      "SLA garanti 99.9%",
+      "Formation équipe incluse"
+    ],
+    popular: false,
+    cta: "Nous contacter"
+  }
+];
+
+// Add missing Mail import
+import { Mail } from 'lucide-react';
+
+export default function Services() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#00ff41]/30 shadow-[0_0_20px_rgba(0,255,65,0.2)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-7 h-7 animate-pulse" />
+              <span className="font-mono tracking-tight">Agency Leo</span>
+            </Link>
+            <div className="flex items-center gap-4">
+              <Button 
+                asChild
+                className="hidden sm:flex bg-[#00ff41] text-black hover:bg-[#00cc33] font-semibold shadow-[0_0_20px_rgba(0,255,65,0.4)]"
+              >
+                <Link to={createPageUrl('Contact')}>Consultation Gratuite</Link>
+              </Button>
+              <MobileMenu />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="py-20 lg:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-[#001a0d]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              <Sparkles className="inline w-4 h-4 mr-2" />
+              Nos Services
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
+              Solutions d'<span className="text-[#00ff41]">Automatisation IA</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+              Des outils puissants et personnalisés pour transformer votre entreprise
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                className="p-6 bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl hover:border-[#00ff41]/50 transition-all group flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-14 h-14 rounded-xl bg-[#00ff41]/10 flex items-center justify-center mb-5 group-hover:bg-[#00ff41]/20 transition-colors">
+                  <service.icon className="w-7 h-7 text-[#00ff41]" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-gray-400 mb-3 text-sm">{service.description}</p>
+                
+                {/* Benefits highlight */}
+                <div className="bg-[#00ff41]/5 border border-[#00ff41]/20 rounded-lg p-3 mb-4">
+                  <p className="text-[#00ff41] text-xs font-medium">
+                    💡 {service.benefits}
+                  </p>
+                </div>
+                
+                <ul className="space-y-2 flex-1">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-sm text-gray-500">
+                      <Check className="w-4 h-4 text-[#00ff41] mr-2 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
+                <Button 
+                  asChild
+                  className="w-full mt-5 bg-transparent border border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41] hover:text-black font-semibold transition-all"
+                >
+                  <Link to={`${createPageUrl('Contact')}?service=${service.serviceKey}`}>
+                    Demander un devis
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/30 rounded-full uppercase tracking-wider">
+              Tarifs
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+              Nos <span className="text-[#00ff41]">Packs</span> de Prix
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Des solutions adaptées à chaque budget et chaque besoin
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, index) => (
+              <motion.div
+                key={index}
+                className={`relative p-8 rounded-2xl border ${
+                  plan.popular 
+                    ? 'bg-gradient-to-b from-[#00ff41]/10 to-[#1a1a1a] border-[#00ff41] shadow-[0_0_40px_rgba(0,255,65,0.2)]' 
+                    : 'bg-[#1a1a1a] border-[#2a2a2a]'
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-[#00ff41] text-black px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                      <Star className="w-4 h-4" />
+                      Plus populaire
+                    </span>
+                  </div>
+                )}
+                
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <p className="text-gray-500 text-sm mb-6">{plan.description}</p>
+                
+                <div className="mb-6">
+                  <span className="text-4xl font-black text-[#00ff41]">${plan.price}</span>
+                  <span className="text-gray-500">{plan.period}</span>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-sm text-gray-300">
+                      <Check className="w-5 h-5 text-[#00ff41] mr-3 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Button 
+                  asChild
+                  className={`w-full ${
+                    plan.popular 
+                      ? 'bg-[#00ff41] text-black hover:bg-[#00cc33]' 
+                      : 'bg-[#2a2a2a] text-white hover:bg-[#3a3a3a]'
+                  } font-semibold py-6`}
+                >
+                  <Link to={createPageUrl('Contact')}>
+                    {plan.cta}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-[#00ff41]/10 to-[#00cc33]/10 border-y border-[#00ff41]/20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-black mb-4">
+            Prêt à <span className="text-[#00ff41]">Automatiser</span>?
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Réservez une consultation gratuite de 30 minutes pour discuter de votre projet
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              asChild
+              size="lg"
+              className="bg-[#00ff41] text-black hover:bg-[#00cc33] font-bold px-8 shadow-[0_0_30px_rgba(0,255,65,0.4)]"
+            >
+              <Link to={createPageUrl('Contact')}>
+                <Sparkles className="mr-2 w-5 h-5" />
+                Consultation Gratuite
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-black border-t border-[#2a2a2a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-6 h-6" />
+              <span className="font-mono">Agency Leo Services</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+              <Link to={createPageUrl('MentionsLegales')} className="hover:text-[#00ff41] transition-colors">
+                Mentions Légales
+              </Link>
+              <Link to={createPageUrl('PolitiqueConfidentialite')} className="hover:text-[#00ff41] transition-colors">
+                Politique de Confidentialité
+              </Link>
+            </div>
+            <div className="text-sm text-gray-600">
+              © 2025 Agency Leo Services
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <SmartChatBot />
+    </div>
+  );
