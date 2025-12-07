@@ -1,0 +1,197 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Bot } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+
+export default function MentionsLegales() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#00ff41]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to={createPageUrl('Home')} className="flex items-center gap-2 text-[#00ff41] font-bold text-xl">
+              <Bot className="w-7 h-7" />
+              <span className="font-mono tracking-tight">Agency Leo</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Button
+            variant="outline"
+            asChild
+            className="mb-8 border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41]/10"
+          >
+            <Link to={createPageUrl('Home')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour au site
+            </Link>
+          </Button>
+
+          <div className="bg-[#1a1a1a] border border-[#00ff41]/30 rounded-2xl p-6 sm:p-10 shadow-[0_0_30px_rgba(0,255,65,0.1)]">
+            <h1 className="text-3xl sm:text-4xl font-black text-[#00ff41] mb-2 drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
+              Mentions Légales
+            </h1>
+            <p className="text-[#00cc33] text-sm italic mb-8">
+              Dernière mise à jour : Novembre 2025
+            </p>
+
+            <div className="bg-[#00ff41]/5 border-l-4 border-[#00ff41] p-4 rounded-r-lg mb-8">
+              <p className="text-gray-300">
+                <strong className="text-white">Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, il est précisé aux utilisateurs du site automapros.ca l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.</strong>
+              </p>
+            </div>
+
+            <div className="space-y-8 text-gray-300">
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  1. Éditeur du Site
+                </h2>
+                <p><strong className="text-white">Raison sociale :</strong> Agency Leo Services</p>
+                <p><strong className="text-white">Forme juridique :</strong> Entreprise individuelle / Auto-entrepreneur</p>
+                <p className="mt-2"><strong className="text-white">Adresse du siège social :</strong></p>
+                <p>630 avenue Querbes<br />Montréal, QC H2V 3W7<br />Canada</p>
+                <p className="mt-2"><strong className="text-white">Téléphone :</strong> +1 (438) 334-0328</p>
+                <p><strong className="text-white">Email :</strong> <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></p>
+                <p><strong className="text-white">Directeur de la publication :</strong> Leocade Houndeton Boton</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  2. Hébergement du Site
+                </h2>
+                <p><strong className="text-white">Hébergeur :</strong> Amazon Web Services (AWS)</p>
+                <p><strong className="text-white">Type de serveur :</strong> Amazon EC2</p>
+                <p><strong className="text-white">Localisation :</strong> États-Unis (East Coast)</p>
+                <p className="mt-2">
+                  Amazon Web Services, Inc.<br />
+                  410 Terry Avenue North<br />
+                  Seattle, WA 98109-5210<br />
+                  États-Unis<br />
+                  Site web : <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" className="text-[#00ff41] hover:underline">aws.amazon.com</a>
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  3. Propriété Intellectuelle
+                </h2>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">3.1 Droits d'auteur</h3>
+                <p>L'ensemble du contenu présent sur le site <strong className="text-white">automapros.ca</strong> (textes, graphismes, logos, icônes, images, vidéos, sons, logiciels, bases de données) est la propriété exclusive d'Agency Leo Services, sauf mention contraire.</p>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">3.2 Reproduction interdite</h3>
+                <p>Toute représentation ou reproduction, totale ou partielle, du site et de son contenu, par quelque procédé que ce soit, sans l'autorisation préalable expresse d'Agency Leo Services, est interdite et constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">3.3 Marques et logos</h3>
+                <p>Les marques, logos et noms de domaine mentionnés sur le site sont la propriété exclusive d'Agency Leo Services ou de leurs propriétaires respectifs. Toute utilisation sans autorisation préalable constitue une contrefaçon.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  4. Données Personnelles et RGPD
+                </h2>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">4.1 Responsable de traitement</h3>
+                <p><strong className="text-white">Agency Leo Services</strong> est responsable du traitement de vos données personnelles.</p>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">4.2 Collecte de données</h3>
+                <p>Nous collectons les données suivantes :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Données d'identité :</strong> nom, prénom, adresse email, numéro de téléphone</li>
+                  <li><strong className="text-white">Données de navigation :</strong> adresse IP, type de navigateur, pages visitées, durée de visite</li>
+                  <li><strong className="text-white">Données de contact :</strong> messages envoyés via le formulaire de contact</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">4.3 Finalités du traitement</h3>
+                <p>Vos données sont utilisées pour :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li>Répondre à vos demandes de contact</li>
+                  <li>Améliorer nos services et notre site web</li>
+                  <li>Vous envoyer des informations sur nos services (avec votre consentement)</li>
+                  <li>Respecter nos obligations légales et réglementaires</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">4.4 Vos droits</h3>
+                <p>Conformément au RGPD et à la loi canadienne, vous disposez des droits suivants :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Droit d'accès :</strong> obtenir une copie de vos données</li>
+                  <li><strong className="text-white">Droit de rectification :</strong> corriger vos données inexactes</li>
+                  <li><strong className="text-white">Droit à l'effacement :</strong> supprimer vos données</li>
+                  <li><strong className="text-white">Droit d'opposition :</strong> refuser le traitement de vos données</li>
+                  <li><strong className="text-white">Droit à la portabilité :</strong> récupérer vos données dans un format structuré</li>
+                </ul>
+                <p className="mt-2">Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></p>
+
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">4.5 Durée de conservation</h3>
+                <p>Vos données personnelles sont conservées pendant :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Données de contact :</strong> 3 ans à compter du dernier contact</li>
+                  <li><strong className="text-white">Données de navigation :</strong> 13 mois maximum</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  5. Cookies et Traceurs
+                </h2>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">5.1 Utilisation des cookies</h3>
+                <p>Le site automapros.ca utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic.</p>
+                
+                <h3 className="text-lg font-semibold text-[#00cc33] mt-4 mb-2">5.2 Types de cookies utilisés</h3>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Cookies techniques :</strong> nécessaires au fonctionnement du site</li>
+                  <li><strong className="text-white">Cookies analytiques :</strong> Google Analytics (avec consentement)</li>
+                  <li><strong className="text-white">Cookies de personnalisation :</strong> préférences d'affichage</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  6. Limitation de Responsabilité
+                </h2>
+                <p>Agency Leo Services s'efforce de fournir des informations exactes et à jour sur ce site. Toutefois, nous ne pouvons garantir l'exactitude, la complétude ou la pertinence des informations publiées.</p>
+                <p className="mt-2">Agency Leo Services ne saurait être tenue responsable des dommages directs ou indirects résultant de l'utilisation de ce site ou de l'impossibilité d'y accéder.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  7. Droit Applicable
+                </h2>
+                <p>Les présentes mentions légales sont régies par le droit canadien et la province de Québec. En cas de litige, les tribunaux de Montréal seront seuls compétents.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-[#00ff41] border-b-2 border-[#00ff41] pb-2 mb-4">
+                  8. Contact
+                </h2>
+                <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter :</p>
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li><strong className="text-white">Par email :</strong> <a href="mailto:contact@automapros.ca" className="text-[#00ff41] hover:underline">contact@automapros.ca</a></li>
+
+                  <li><strong className="text-white">Par courrier :</strong> 630 avenue Querbes, Montréal, QC H2V 3W7, Canada</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-8 bg-black border-t border-[#2a2a2a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600">
+          © 2025 Agency Leo Services. Tous droits réservés.
+        </div>
+      </footer>
+    </div>
+  );
+}
